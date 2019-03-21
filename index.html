@@ -1,0 +1,2283 @@
+﻿<!DOCTYPE html>
+<html class='alexandre'>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta charset="UTF-8" />
+<title>👻</title>
+<meta name="description" content="Pesquisa de Materiais" />
+
+<!--jQuery-->
+<script
+  src="https://code.jquery.com/jquery-3.3.1.min.js"
+  integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+  crossorigin="anonymous"></script>
+  
+  <!--Font Awesome-->
+  <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" />
+
+<!--Google Fonts-->
+<link href="https://fonts.googleapis.com/css?family=Quicksand" rel="stylesheet">
+
+<!--Kite Menu CSS-->
+
+<style>
+
+
+* {
+    margin: 1px;
+    padding: 1px;
+    box-sizing: border-box;
+    border-radius: 15px;
+}
+option{
+    margin: 1px;
+    padding: 1px;
+    box-sizing: border-box;
+    border-radius: 15px;
+	color: rgba(255, 255, 255, 0.7);
+}
+
+.kite-menu {
+	font-family: 'Quicksand', sans-serif;
+	width: 100%;
+	height: 55px;
+	line-height: 55px;
+	color: rgba(255, 255, 255, 0.7);
+	position: relative;
+	overflow: hidden;
+}
+
+.kite-menu,
+.kite-menu.expand {
+	transition: all ease-in-out .4s;
+	-webkit-transition: all ease-in-out .4s;
+	-moz-transition: all ease-in-out .4s;
+}
+
+.kite-menu.expand-1x {
+	height: 110px;
+}
+
+.kite-menu.expand-2x {
+	height: 200px;
+}
+
+
+/* Text Shaodw */
+
+.kite-menu.text-shadow {
+	text-shadow: 1px 0.5px rgba(0, 0, 0, 0.4);
+	-webkit-text-shadow: 1px 0.5px rgba(0, 0, 0, 0.4);
+}
+
+
+/* Box Shadow*/
+
+.kite-menu.box-shadow {
+	box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.5);
+	-webkit-box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.5);
+}
+
+
+/* Menu Logo */
+
+.kite-menu .kite-logo {
+	display: inline-block;
+	position: absolute;
+	left: 10px;
+}
+
+
+/* A wrapper for hamburger icon*/
+
+.kite-menu-trigger {
+	position: absolute;
+	right: 10px;
+	top: 15px;
+	-webkit-appearance: none;
+}
+
+
+#hamburger {
+	-webkit-tap-highlight-color: transparent;
+	cursor: pointer;
+	padding: 10px 35px 16px 0px;
+}
+
+#hamburger span,
+#hamburger span:before,
+#hamburger span:after {
+	cursor: pointer;
+	border-radius: 4px;
+	height: 2px;
+	width: 30px;
+	background: rgb(255, 255, 255);
+	position: absolute;
+	display: inline-block;
+	content: '';
+}
+
+#hamburger span:before {
+	top: -10px;
+}
+
+#hamburger span:after {
+	bottom: -10px;
+}
+
+
+/*
+#hamburger span, #hamburger span:before, #hamburger span:after {
+  transition: all 200ms ease-in-out;
+}
+*/
+
+#hamburger span,
+#hamburger span:before,
+#hamburger span:after {
+	-webkit-transition: all 300ms cubic-bezier(0.645, 0.045, 0.355, 1.000);
+	-moz-transition: all 300ms cubic-bezier(0.645, 0.045, 0.355, 1.000);
+	-o-transition: all 300ms cubic-bezier(0.645, 0.045, 0.355, 1.000);
+	transition: all 300ms cubic-bezier(0.645, 0.045, 0.355, 1.000);
+	/* easeInOutCubic */
+}
+
+#hamburger.active span {
+	background-color: transparent;
+}
+
+#hamburger.active span:before,
+#hamburger.active span:after {
+	top: 0;
+}
+
+#hamburger.active span:before {
+	transform: rotate(45deg);
+}
+
+#hamburger.active span:after {
+	transform: translateY(-10px) rotate(-45deg);
+	top: 10px;
+}
+
+
+/* Menu Links */
+.linkvideo {
+text-decoration: none;
+color: #fff;
+-webkit-tap-highlight-color: transparent;
+color: rgba(255, 255, 255, 0.80);
+padding: 5px;
+color: #fffaf0;
+font-family: sans-serif;
+border-radius: 5px;
+}
+.links-wrapper {
+	position: absolute;
+	margin-top: 50px;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	display: none;
+}
+.nav-container{ background: url('images/nav_bg.jpg') repeat-x 0 0;}
+    .f-nav{ z-index: 9999; position: fixed; left: 0; top: 0; width: 100%;} /* this make our menu fixed top */
+
+.nav {
+    .nav ul { list-style: none; }
+    .nav ul li{float: left; margin-top: 6px; padding: 6px; border-right: 1px solid #ACACAC;}
+    .nav ul li:first-child{ padding-left: 0;}
+    .nav ul li a { }
+    .nav ul li a:hover{ text-decoration: underline;}
+}
+
+.menu-links {
+	list-style: none;
+	width: 100%;
+	text-align: center;
+}
+
+.menu-links li {
+	display: inline;
+	margin: 5px;
+}
+
+.menu-links li a {
+	text-decoration: none;
+	color: #fff;
+	/* for zombies browser*/
+	-webkit-tap-highlight-color: transparent;
+	color: rgba(255, 255, 255, 0.80);
+	padding: 5px;
+}
+
+.menu-links li a:hover {
+	border-bottom: 1px solid;
+	border-top: 1px solid;
+	border-color: rgba(255, 255, 255, 0.4);
+	color: #fff;
+	transition: .5s;
+}
+
+
+/* Kite Search */
+
+.kite-search-trigger {
+	-webkit-tap-highlight-color: transparent;
+	width: 35px;
+	height: 35px;
+	line-height: 32px;
+	text-align: center;
+	border-radius: 50%;
+	position: absolute;
+	cursor: pointer;
+	right: 60px;
+	top: 10px;
+	font-size: 22px;
+	color: #fff;
+}
+
+.kite-search-trigger:hover {
+	background: rgba(0, 0, 0, 0.2);
+}
+
+.kite-search {
+	display: block;
+	position: absolute;
+	top: 50px;
+	text-align: center;
+	width: 100%;
+	display: none;
+}
+
+.kite-search form {
+	margin: 0;
+}
+
+.kite-search input[type="text"] {
+	background: rgba(255, 255, 255, 0.99);
+	padding: 10px;
+	border: 0;
+	outline: 0;
+	border-radius: 20px 0 0 20px;
+	width: 120px;
+	transition: all 200ms ease-in-out;
+}
+
+.kite-search input[type="text"]:focus {
+	width: 220px;
+	transition: all 200ms ease-in-out;
+}
+
+.kite-search .search-btn {
+	padding: 10px;
+	border: 0;
+	outline: 0;
+	cursor: pointer;
+	-webkit-tap-highlight-color: transparent;
+	background: #ddd;
+	color: #aaa;
+	border-radius: 0 50% 50% 0;
+	margin-left: -5px;
+}
+
+.kite-search .search-btn:hover {
+	background: #eee;
+}
+
+
+/* Kite Menu on Large Screens */
+
+@media only screen and (min-width: 480px) {
+	.kite-search-trigger {
+		display: none;
+	}
+	.kite-search {
+		position: absolute;
+		display: block;
+		top: 0;
+		right: 60px;
+		text-align: right;
+	}
+    .desc{
+    font-size: 15px;
+    position: relative;
+    text-align: justify;
+    margin: 12px;
+    font-family: sans-serif;
+    }
+    .linkvideo{
+        font-size: 18px;
+    }		
+	.capa{
+	   float: left;
+       padding: 2px;
+       width: 100px;
+
+	 }
+	.post{
+    position: relative;
+    padding: 5px;
+    text-align: start;
+    left: auto;
+    font-size: 20px;
+
+	 }		 	
+}
+@media only screen and (max-width: 959px) {   	
+	.desc{
+    font-size: 20px;
+    position: relative;
+    text-align: justify;
+    margin: 20px;
+    font-family: sans-serif;	
+    }
+	.capa{
+	   float: left;
+       padding: 5px;
+
+	 }  
+}
+@media only screen and (min-width: 768px) and (max-width: 1959px) {
+    .desc{
+    font-size: 20px;
+    position: relative;
+    text-align: justify;
+    margin: 20px;
+    font-family: sans-serif;
+    }
+	.capa{
+	   float: left;
+       padding: 5px;
+
+	 }
+	.post{
+    position: relative;
+    padding: 5px;
+    text-align: start;
+    left: auto;
+    font-size: 20px;
+
+	 }	 
+}
+@media only screen and (max-width: 767px) {
+    .desc{
+    font-size: 18px;
+    position: relative;
+    text-align: justify;
+    margin: 18px;
+    font-family: sans-serif;
+    }
+	.capa{
+	   float: left;
+       padding: 5px;
+       height: 250px;
+	 }
+	.post{
+    position: relative;
+    padding: 5px;
+    text-align: start;
+    left: auto;
+    font-size: 20px;
+
+	 }		 
+}
+@media only screen and (min-width: 480px) and (max-width: 767px) {
+    .desc{
+    font-size: 15px;
+    position: relative;
+    text-align: justify;
+    margin: 15px;
+    font-family: sans-serif;
+    }
+	.capa{
+	   float: left;
+       padding: 5px;
+
+	 }  	
+    .linkvideo{
+        font-size: 20px;
+    }	
+	.capa{
+		 height: 150px;
+		 padding: 7px
+    }
+	.post{
+    position: relative;
+    padding: 5px;
+    text-align: start;
+    left: auto;
+    font-size: 20px;
+
+	 }		
+}
+@media only screen and (max-width: 479px) {
+	.datalist datalist {
+		position: absolute;
+		display: block;
+	}	
+    .desc{
+    font-size: 12px;
+    position: relative;
+    text-align: justify;
+    margin: 10px;
+    font-family: sans-serif;
+    }
+    .linkvideo{
+        font-size: 15px;
+    }		
+	.capa{
+	   float: left;
+       padding: 2px;
+
+	 }
+	.post{
+    position: relative;
+    padding: 3px;
+    text-align: start;
+    left: auto;
+    font-size: 15px;
+
+	 }		 
+}
+
+
+/* Kite Menu Themes */
+
+.default {
+	background: #FF512F;
+	/* fallback for old browsers */
+	background: -webkit-linear-gradient(to bottom, #DD2476, #FF512F);
+	/* Chrome 10-25, Safari 5.1-6 */
+	background: linear-gradient(to bottom, #DD2476, #FF512F);
+	/* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+}
+
+.lush {
+	background: #56ab2f;
+	/* fallback for old browsers */
+	background: -webkit-linear-gradient(to right, #a8e063, #56ab2f);
+	/* Chrome 10-25, Safari 5.1-6 */
+	background: linear-gradient(to right, #a8e063, #56ab2f);
+	/* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+}
+
+.deep-purple {
+	background: #673AB7;
+	/* fallback for old browsers */
+	background: -webkit-linear-gradient(to right, #512DA8, #673AB7);
+	/* Chrome 10-25, Safari 5.1-6 */
+	background: linear-gradient(to right, #512DA8, #673AB7);
+	/* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+}
+
+.rainbow {
+	background: #00F260;
+	/* fallback for old browsers */
+	background: -webkit-linear-gradient(to right, #0575E6, #00F260);
+	/* Chrome 10-25, Safari 5.1-6 */
+	background: linear-gradient(to right, #0575E6, #00F260);
+	/* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+}
+
+.instagram {
+    background: rgba(131, 58, 180, 0.25);
+    background: -webkit-linear-gradient(to right, #fcb045, #fd1d1d, #833ab4);
+    background: linear-gradient(to right, rgba(142, 112, 255, 0.41), rgba(213, 181, 255, 0.32), rgba(104, 11, 167, 0.32));
+    color: #00ed64;
+    font-size: 15px;
+    position: relative;
+    background-attachment: unset;
+}
+
+.dimigo {
+	background: #ec008c;
+	/* fallback for old browsers */
+	background: -webkit-linear-gradient(to right, #fc6767, #ec008c);
+	/* Chrome 10-25, Safari 5.1-6 */
+	background: linear-gradient(to right, #fc6767, #ec008c);
+	/* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+}
+
+.deep-space {
+	background: #000000;
+	/* fallback for old browsers */
+	background: -webkit-linear-gradient(to right, #434343, #000000);
+	/* Chrome 10-25, Safari 5.1-6 */
+	background: linear-gradient(to right, #434343, #000000);
+	/* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+}
+.alexandre {
+    background: #5e03ff;
+    background: -webkit-linear-gradient(to right, #512DA8, #673AB7);
+    background: linear-gradient(to right, #000000, #10002b);
+}
+#pop{display:none;position:fixed;float: left;left:0;top:0;padding:10px;width:70%;height:70%;z-index:99999;backgroud-color:#000}
+</style>	
+</head>
+<body>
+<!--Start Kite Menu-->
+<div class="nav-container">
+<div class="nav">
+<nav class="kite-menu rainbow fixed">
+   <h2 class="kite-logo">ESTOQUE 👻</h2>
+   <div class="kite-menu-trigger" id="hamburger"><span></span></div>
+   <div class="kite-search-trigger">
+      <i class="fa fa-search"></i>
+   </div>
+   <div class="kite-search search-input">
+      <form action="#">
+         <input id="myInput" onkeyup="myFunction()" type="text" list="historico" placeholder="Busque...">
+         <button type="submit" class="search-btn"> <i class="fa fa-search"></i> </button>
+		 <datalist class="nav" id="historico">
+<option value="ROTEADOR"></option>
+<option value="ANTENA"></option>
+<option value="ONU"></option>
+<option value="FONTE"></option>
+<option value="CONECTOR"></option>
+
+
+ 
+</datalist>
+      </form>
+   </div>
+   </div>
+</nav>
+<div class="clear"></div>
+</div>
+</div>
+<br/>
+<!--End Kite Menu-->
+
+<ul id="myUL">
+<style>
+#demo {
+  background-color: #000;
+  padding: 1.4em 1.5em 0;
+}
+.flowplayer {
+  background-color: #324584;
+  height: 100%
+}
+.item {
+  box-sizing: border-box;
+  display: inline-block;
+  vertical-align: top;
+  width: 100%;
+}
+
+/* mobile layout */
+@media (max-width: 900px) {
+  .item { width: 100% }
+}
+</style>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 10</i><i class="instagram"> - ONU EPON V2804CG 4*1000/MBPS</i><i class="instagram"> - 2 UN</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 11</i><i class="instagram"> - ONU FIBERHOME FIBOOM AN5506-07</i><i class="instagram"> - 1 UN</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 12</i><i class="instagram"> - ONU FIBERHOME GPON 1 PORTA</i><i class="instagram"> - 218 UN</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 13</i><i class="instagram"> - ONU FIBERHOME GPON AN5506-04</i><i class="instagram"> - 15 UN</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 14</i><i class="instagram"> - ONU FIBERHOME GPON AN5506-09 A3A MDU</i><i class="instagram"> - 13 UN</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 15</i><i class="instagram"> - Roteador Wireless N TP-LINK 300Mbps</i><i class="instagram"> - 12 UN</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 16</i><i class="instagram"> - Modem Router TP-LINK 150Mbps Wireless N ADSL2+</i><i class="instagram"> - 50 UN</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 17</i><i class="instagram"> - MODEM ROUTER VDSL</i><i class="instagram"> - 37 UN</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 18</i><i class="instagram"> - CAIXA OPTICA SOFS 24FO ETK - PRETA</i><i class="instagram"> - 4 UN</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 19</i><i class="instagram"> - CEO CAIXA EMENDA OPT 24F FIBRACEM</i><i class="instagram"> - 6 UN</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 20</i><i class="instagram"> - CEO MINI CAIXA EMENDA OPT 12F FIBRACEM</i><i class="instagram"> - 5 UN</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 21</i><i class="instagram"> - CONECTOR SC/APC DPR</i><i class="instagram"> - 15 UN</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 22</i><i class="instagram"> - CONECTOR SC/APC GREATEK - VERDE</i><i class="instagram"> - 129 UN</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 23</i><i class="instagram"> - CONECTOR SC/APC SEI BRASIL</i><i class="instagram"> - 56 UN</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 24</i><i class="instagram"> - CONECTOR SC/UPC DPR</i><i class="instagram"> - 85 UN</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 25</i><i class="instagram"> - CONECTOR SC/UPC GREATEK - AZUL</i><i class="instagram"> - 822 UN</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 26</i><i class="instagram"> - CONECTOR SC/UPC SEI BRASIL</i><i class="instagram"> - 206 UN</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 27</i><i class="instagram"> - CONECTOR MACHO P/ CABO C2FCP</i><i class="instagram"> - 21 UN</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 28</i><i class="instagram"> - TELEFONE IP TIP 125 POE INTELBRAS</i><i class="instagram"> - 0 UN</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 29</i><i class="instagram"> - SUPORTE 07 Metros</i><i class="instagram"> - 31 UN</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 30</i><i class="instagram"> - SUPORTE 120 BRASILIT</i><i class="instagram"> - 51 UN</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 31</i><i class="instagram"> - SUPORTE 23F3 TELHA DE BARRO</i><i class="instagram"> - 95 UN</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 32</i><i class="instagram"> - SUPORTE 82 PAREDE 04 METROS</i><i class="instagram"> - 198 UN</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 33</i><i class="instagram"> - PROTETOR SOLAR</i><i class="instagram"> - 24 UN</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 34</i><i class="instagram"> - POWER METER PON FHP</i><i class="instagram"> - 0 UN</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 35</i><i class="instagram"> - ESTICADOR PLÁSTICO PARA DROP ÓPTICO</i><i class="instagram"> - 320 UN</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 36</i><i class="instagram"> - INVERSOR CC/CA 48V 127V 1 KVA PROTECO</i><i class="instagram"> - 2 UN</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 37</i><i class="instagram"> - DIELETRICO QUADRADO P/DROP</i><i class="instagram"> - 30 UN</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 38</i><i class="instagram"> - DIELETRICO TUBULAR COM PASSANTE</i><i class="instagram"> - 0 UN</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 39</i><i class="instagram"> - ABRAÇADEIRA BAP 2 COMPLETA</i><i class="instagram"> - 0 UN</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 40</i><i class="instagram"> - ABRAÇADEIRA BAP 3 COMPLETA</i><i class="instagram"> - 80 UN</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 41</i><i class="instagram"> - CRUZETA DE AÇO</i><i class="instagram"> - 29 UN</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 42</i><i class="instagram"> - SUPORTE TIPO DM (KIT ROLDANA)</i><i class="instagram"> - 625 UN</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 43</i><i class="instagram"> - ROLDANA PLASTICA 2 VIAS (KIT ROLDANA)</i><i class="instagram"> - 1392 UN</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 44</i><i class="instagram"> - ROLDANA PLASTICA 4 VIAS</i><i class="instagram"> - 52 UN</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 45</i><i class="instagram"> - FIO ESPINAR ISOLADO FEI 125</i><i class="instagram"> - 31 RL</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 46</i><i class="instagram"> - ALÇA PRÉ-FORMADA 10,8 A 11,6mm</i><i class="instagram"> - 180 UN</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 47</i><i class="instagram"> - ALÇA PRÉ-FORMADA 4,8MM</i><i class="instagram"> - 299 PC</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 48</i><i class="instagram"> - ALÇA PRÉ-FORMADA 6,4mm A 7,4mm</i><i class="instagram"> - 300 UN</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 49</i><i class="instagram"> - ALÇA PRÉ-FORMADA 6,4mm</i><i class="instagram"> - 14 PC</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 50</i><i class="instagram"> - PARAFUSO PR1 (KIT ROLDANA)</i><i class="instagram"> - 361 UN</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 51</i><i class="instagram"> - PARAFUSO P2 90</i><i class="instagram"> - 8 UN</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 52</i><i class="instagram"> - ROSETA OPTICA - PTO</i><i class="instagram"> - 301 UN</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i style="font-size: 0px;">RUA 0</i><i class="instagram"> 53</i><i class="instagram"> - ANEL GUIA C/ BASE</i><i class="instagram"><br/>0-4-A/1-1</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i style="font-size: 0px;">RUA 0</i><i class="instagram"> 54</i><i class="instagram"> - ANEL GUIA C/ ROSCA Nº1</i><i class="instagram"><br/>0-5-A/1-1</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 55</i><i class="instagram"> - PATCH CORD MULTÍMODO DUPLEX 50/125 LC/PC X LC/PC</i><i class="instagram"> - 0 UN</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 56</i><i class="instagram"> - BOTINA C/ BICO DE PVC TAM 37</i><i class="instagram"> - 9 UN</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 57</i><i class="instagram"> - AÇUCAR SACHE UNIÃO</i><i class="instagram"> - 0 CX</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 58</i><i class="instagram"> - DETERGENTE LIQUIDO 500 ML</i><i class="instagram"> - 14 UN</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 59</i><i class="instagram"> - PAPEL SULFITE AMARELO</i><i class="instagram"> - 21 UN</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 60</i><i class="instagram"> - PAPEL SULFITE AZUL</i><i class="instagram"> - 4 UN</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 61</i><i class="instagram"> - PAPEL SULFITE BRANCO A4</i><i class="instagram"> - 34 UN</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 62</i><i class="instagram"> - PAPEL SULFITE RECICLADO</i><i class="instagram"> - 5 UN</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 63</i><i class="instagram"> - PAPEL SULFITE VERDE</i><i class="instagram"> - 5 UN</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 64</i><i class="instagram"> - DESODORIZADOR DE AMBIENTE</i><i class="instagram"> - 2 UN</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 65</i><i class="instagram"> - ANEL GUIA FITA Nº2 P/ POSTE AGF 2</i><i class="instagram"> - 1500 UN</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 66</i><i class="instagram"> - RETIFICADORA PHB SR 30A 48V</i><i class="instagram"> - 3 UN</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 67</i><i class="instagram"> - HEADSET HTU-310 USB (Tubo de Voz)</i><i class="instagram"> - 16 UN</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i style="font-size: 0px;">RUA 0</i><i class="instagram"> 68</i><i class="instagram"> - CONECTOR RJ 45</i><i class="instagram"><br/>0-4-B/1-1</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 69</i><i class="instagram"> - PÓ DE CAFÉ</i><i class="instagram"> - 77 UN</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 70</i><i class="instagram"> - SACO DE LIXO PRETO 20L</i><i class="instagram"> - 6 PT</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 71</i><i class="instagram"> - SACO PARA LIXO PRETO 100 LT C/ 100 REFORÇADO</i><i class="instagram"> - 4 PT</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 72</i><i class="instagram"> - SACO PARA LIXO PRETO 30/40 LT</i><i class="instagram"> - 0 PT</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 73</i><i class="instagram"> - SACO PARA LIXO PRETO 60 LT</i><i class="instagram"> - 2 PT</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 74</i><i class="instagram"> - PAPEL TOALHA EM ROLO</i><i class="instagram"> - 15 RL</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 75</i><i class="instagram"> - ROLO PAPEL HIGIÊNICO</i><i class="instagram"> - 0 RL</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 77</i><i class="instagram"> - TUBO DE EMENDA OTICA PARA CABO FTTH</i><i class="instagram"> - 18 UN</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 78</i><i class="instagram"> - FONTE NOBREAK PROTECO 24V 10A</i><i class="instagram"> - 1 UN</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 79</i><i class="instagram"> - FONTE NOBREAK 12V 20A</i><i class="instagram"> - 1 UN</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 80</i><i class="instagram"> - FONTE NOBREAK CCN TELECON 48V 4A</i><i class="instagram"> - 1 UN</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 81</i><i class="instagram"> - FONTE NOBREAK JINGDA 24V 16.7A</i><i class="instagram"> - 3 UN</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 82</i><i class="instagram"> - FONTE NOBREAK PROTECO MP24/15-R1</i><i class="instagram"> - 0 UN</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 83</i><i class="instagram"> - FONTE NOBREAK PROTECO MP48/10-R1</i><i class="instagram"> - 0 UN</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 84</i><i class="instagram"> - 48/5-R2 - RETIFICADORA PROTECO</i><i class="instagram"> - 3 UN</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 85</i><i class="instagram"> - FONTE NOBREAK PWM 24V 10A</i><i class="instagram"> - 1 UN</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 89</i><i class="instagram"> - FONTE NOBREAK V/A - MODELO 13,8V5A+0,7A</i><i class="instagram"> - 2 UN</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 90</i><i class="instagram"> - FONTE NOBREAK V/A - MODELO 24V7A+2,5A</i><i class="instagram"> - 2 UN</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 91</i><i class="instagram"> - FONTE NOBREAK V/A - MODELO 48V2,5A+2,5A</i><i class="instagram"> - 1 UN</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 92</i><i class="instagram"> - FONTE NOBREAK VOLT 12V 8A</i><i class="instagram"> - 2 UN</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 93</i><i class="instagram"> - FONTE NOBREAK VOLT 24V 7A</i><i class="instagram"> - 5 UN</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 94</i><i class="instagram"> - DERIVADOR MANTA ZIPADA PARA CEO SVT</i><i class="instagram"> - 6 UN</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 95</i><i class="instagram"> - KIT DE DERIVAÇÃO ETK</i><i class="instagram"> - 15 UN</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 96</i><i class="instagram"> - KIT DERIVADOR PARA CAIXA DE EMENDA SVT FIBRACEM</i><i class="instagram"> - 40 UN</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 97</i><i class="instagram"> - DERIVADOR PARA MINI CEO SVT FIBRACEM</i><i class="instagram"> - 16 UN</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 98</i><i class="instagram"> - ADAPTADOR SC/APC SIMPLEX SM C/ FLANGE (VERDE)</i><i class="instagram"> - 500 UN</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 99</i><i class="instagram"> - ADAPTADOR SC/UPC COM FLANGE</i><i class="instagram"> - 84 UN</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 100</i><i class="instagram"> - ADAPTADOR SM SC APC/SC APC SIMPLEX SEM FLANGE</i><i class="instagram"> - 1 UN</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 101</i><i class="instagram"> - FECHO DENTADO 3/4 x 1,2mm</i><i class="instagram"> - 400 UN</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 102</i><i class="instagram"> - FITA DE AÇO</i><i class="instagram"> - 15 RL</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 103</i><i class="instagram"> - BANDEIROLA PARA ESCADA C/ ILHOS LARANJA</i><i class="instagram"> - 18 UN</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 104</i><i class="instagram"> - SPLITTER 1x16, 0,9mm, 1.5M,SC/APC (VERDE)</i><i class="instagram"> - 40 UN</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 105</i><i class="instagram"> - SPLITTER 1x2 SM SC/APC</i><i class="instagram"> - 3 UN</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 106</i><i class="instagram"> - SPLITTER 1x8 SM SC/UPC</i><i class="instagram"> - 1 UN</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 107</i><i class="instagram"> - SPLITTER 1x8 SM SC/APC (VERDE)</i><i class="instagram"> - 28 UN</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 108</i><i class="instagram"> - ROÇADEIRA GRAMA ELÉTRICA RETA SOMAR 1000W 220V SCHULZ</i><i class="instagram"> - 0 UN</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 109</i><i class="instagram"> - TRAVA PARA ESCADAS</i><i class="instagram"> - 0 UN</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 110</i><i class="instagram"> - FITA P/ ROTULADOR 19mm x 5,5M RHINOPRO DYMO</i><i class="instagram"> - 2 UN</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 111</i><i class="instagram"> - FITA P/ ROTULADOR LETRATAG PAPEL 12mmx4m BRANCO - DYMO</i><i class="instagram"> - 1 UN</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 112</i><i class="instagram"> - ANTENA UBIQUITI AIRFIBER AF-11FX</i><i class="instagram"> - 4 UN</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 113</i><i class="instagram"> - ANTENA UBIQUITI AIRFIBER AF-4X</i><i class="instagram"> - 2 UN</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 114</i><i class="instagram"> - SWITCH CISCO SG110-16 GIGABIT</i><i class="instagram"> - 1 UN</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 115</i><i class="instagram"> - ANTENA UBIQUITI AIRGRID M5 11X14 23DBI</i><i class="instagram"> - 16 UN</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 116</i><i class="instagram"> - SWITCH INTELBRAS SF2842 -MR</i><i class="instagram"> - 1 UN</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 117</i><i class="instagram"> - ANTENA UBIQUITI CPE AIRGRID M5-HP 23DBI</i><i class="instagram"> - 7 UN</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 118</i><i class="instagram"> - SWITCH MIKROTIK CRS 125 -24G-15-RM</i><i class="instagram"> - 2 UN</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 119</i><i class="instagram"> - ANTENA UBIQUITI BULLET-M2-HP OUTDOOR 2.4GHZ 600MW</i><i class="instagram"> - 1 UN</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 120</i><i class="instagram"> - SWITCH MIKROTIK CRS 212 -1G-10S-1S-IN</i><i class="instagram"> - 1 UN</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 121</i><i class="instagram"> - SWITCH MIKROTIK CSS 326 -24G-2S+RM</i><i class="instagram"> - 4 UN</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 122</i><i class="instagram"> - SWITCH TP-LINK TL-R600 VPN</i><i class="instagram"> - 0 UN</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 123</i><i class="instagram"> - ANTENA UBIQUITI LITEBEAM LBE-M5-23 23DBI 5GHZ 100+MBPS</i><i class="instagram"> - 72 UN</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 124</i><i class="instagram"> - SWITCH TP-LINK TL- SF1016DS</i><i class="instagram"> - 0 UN</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 125</i><i class="instagram"> - SWITCH TP-LINK TL-SF1024</i><i class="instagram"> - 0 UN</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 126</i><i class="instagram"> - SWITCH TP-LINK TL- SG108E 10/100/1000</i><i class="instagram"> - 19 UN</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 127</i><i class="instagram"> - SWITCH UBIQUITI TOUGHSWITCH POE PRO</i><i class="instagram"> - 0 UN</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 128</i><i class="instagram"> - SWITCH 3COM 3C16470B</i><i class="instagram"> - 1 UN</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i style="font-size: 0px;">RUA 1</i><i class="instagram"> 129</i><i class="instagram"> - SWITCH 8 PORTAS FAST INTELBRAS SF800VLAN</i><i class="instagram"><br/>1-1-C/1-1</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i style="font-size: 0px;">RUA 1</i><i class="instagram"> 129</i><i class="instagram"> - SWITCH 8 PORTAS FAST 10/100MBPS IWTECH OIW-SW8FEVP</i><i class="instagram"><br/>1-1-C/1-2</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i style="font-size: 0px;">RUA 1</i><i class="instagram"> 129</i><i class="instagram"> - SWITCH 8 PORTAS FAST GIGABIT TP-LINK</i><i class="instagram"><br/>1-1-C/1-3</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i style="font-size: 0px;">RUA 1</i><i class="instagram"> 129</i><i class="instagram"> - SWITCH 8 PORTAS FAST INTELBRAS SF800V</i><i class="instagram"><br/>1-1-C/1-4</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i style="font-size: 0px;">RUA 1</i><i style="font-size: 0px;">RUA 1</i><i class="instagram"> 129</i><i class="instagram">SWITCH 8 PORTAS FAST MULTILASER</i><i class="instagram"><br/>1-1-C/1-5</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i style="font-size: 0px;">RUA 1</i><i class="instagram"> 123</i><i class="instagram"> - SUPORTE LITEBEAM</i><i class="instagram"><br/>1-1-D/1-1</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 130</i><i class="instagram"> - ANTENA UBIQUITI LITEBEAM LBE-5AC-16-120</i><i class="instagram"> - 6 UN</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 131</i><i class="instagram"> - PAC-SWITCH E BANDEJA THINK</i><i class="instagram"> - 0 UN</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 132</i><i class="instagram"> - ANTENA UBIQUITI LITEBEAM LBE-5AC-GEN2-5 23DBI 450MBPS</i><i class="instagram"> - 2 UN</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 133</i><i class="instagram"> - ANTENA UBIQUITI AIRMAX NANOSTATION LOCO M2</i><i class="instagram"> - 11 UN</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 134</i><i class="instagram"> - MIKROTIK-ROUTERBOARD RB 1100/AHX2</i><i class="instagram"> - 4 UN</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 135</i><i class="instagram"> - ROUTER BOARD 1200</i><i class="instagram"> - 5 UN</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 136</i><i class="instagram"> - ANTENA UBIQUITI AIRMAX NANOSTATION LOCO M5</i><i class="instagram"> - 96 UN</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 137</i><i class="instagram"> - ROUTER BOARD 260 GS</i><i class="instagram"> - 0 UN</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 138</i><i class="instagram"> - ROUTER BOARD 260 GSP</i><i class="instagram"> - 1 UN</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 268</i><i class="instagram"> - ROUTER BOARD 450 G</i><i class="instagram"> - 0 UN</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 269</i><i class="instagram"> - ROUTER BOARD 750</i><i class="instagram"> - 0 UN</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 270</i><i class="instagram"> - ROUTER BOARD 750UP</i><i class="instagram"> - 1 UN</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 271</i><i class="instagram"> - ROUTER BOARD 750UP-R2</i><i class="instagram"> - 0 UN</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 272</i><i class="instagram"> - ROUTER BOARD 850 G x2</i><i class="instagram"> - 1 UN</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 273</i><i class="instagram"> - ANTENA UBIQUITI NANOBEAM NBE-M5-16 5GHZ 16DBI</i><i class="instagram"> - 6 UN</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 274</i><i class="instagram"> - ANTENA UBIQUITI NANOBEAM NBE-M5-19 5GHZ 19DBI</i><i class="instagram"> - 4 UN</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 275</i><i class="instagram"> - ANTENA UBIQUITI NANOBEAM NBE-5AC-19 5GHZ 19DBI</i><i class="instagram"> - 2 UN</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 276</i><i class="instagram"> - ANTENA UBIQUITI AIRMAX NANOSTATION LOCOM9-BR 900MHZ</i><i class="instagram"> - 1 UN</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 277</i><i class="instagram"> - ANTENA UBIQUITI AIRMAX NANOSTATION M2 11dBi</i><i class="instagram"> - 4 UN</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 278</i><i class="instagram"> - ANTENA UBIQUITI AIRMAX NANOSTATION2 10dBi</i><i class="instagram"> - 3 UN</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 279</i><i class="instagram"> - ANTENA UBIQUITI AIRMAX NANOSTATION NSM365</i><i class="instagram"> - 2 UN</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 280</i><i class="instagram"> - ANTENA UBIQUITI AIRMAX NANOSTATION M5 MIMO NSM5</i><i class="instagram"> - 81 UN</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 281</i><i class="instagram"> - ANTENA UBIQUITI NANOBEAM NBE-M5-300 5GHZ 22DBI DUPLA POLARIZ.</i><i class="instagram"> - 3 UN</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 282</i><i class="instagram"> - ANTENA POWERBEAM PBE-5AC-500 5GHZ 450+MBPS 27DBI</i><i class="instagram"> - 1 UN</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 283</i><i class="instagram"> - ANTENA UBIQUITI AIRMAX ROCKET M5 MIMO</i><i class="instagram"> - 1 UN</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 284</i><i class="instagram"> - ANTENA UBIQUITI AIRMAX ROCKET M9 MIMO 900MHZ</i><i class="instagram"> - 2 UN</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 285</i><i class="instagram"> - ANTENA UBIQUITI AIRMAX ROCKET M5 TITANIUM RM5-TI</i><i class="instagram"> - 2 UN</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 286</i><i class="instagram"> - ANTENA UNIFI AP OUTDOOR 5</i><i class="instagram"> - 0 UN</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 287</i><i class="instagram"> - ANTENA UBIQUITI POWERBEAM PBE-M5-400-BR 5GHZ 25DBI DUPLA POLARIZAÇÃO</i><i class="instagram"> - 3 UN</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 288</i><i class="instagram"> - ANTENA UBIQUITI NANOBEAM NBE-M5-400</i><i class="instagram"> - 0 UN</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 289</i><i class="instagram"> - ABRAÇADEIRA DE NYLON 4,8mm x 200mm</i><i class="instagram"> - 4564 UN</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 290</i><i class="instagram"> - ABRAÇADEIRA DE NYLON 4,8mm x 390mm</i><i class="instagram"> - 800 UN</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 291</i><i class="instagram"> - ABRAÇADEIRA DE NYLON 7,5mm x 400mm</i><i class="instagram"> - 100 UN</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 292</i><i class="instagram"> - GBIC 1.25G 1310nm LC 20Km - CLASS 1 LASER PRODUCT 21CFR(J)</i><i class="instagram"> - 2 UN</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 293</i><i class="instagram"> - GBIC AIMBRIDGES SFP-155E</i><i class="instagram"> - 8 UN</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 294</i><i class="instagram"> - GBIC AVAGO AFCT-5705PZ 1300nm LASER PROD 21CRF(J) CLASS 1</i><i class="instagram"> - 5 UN</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 295</i><i class="instagram"> - GBIC AXCEN AXGD-1354-0533 - SFP-1000LX-DD-IT - CLASS 1 LASER 1310nm</i><i class="instagram"> - 2 UN</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 296</i><i class="instagram"> - GBIC HG GENUINE MXPD - 243MD - 1.25g 1310NM 40Km SM</i><i class="instagram"> - 2 UN</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 297</i><i class="instagram"> - GBIC MIKROTIK S+31DLC10D - SFP+ 10G 10Km 1310nm DDM</i><i class="instagram"> - 0 UN</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 298</i><i class="instagram"> - GBIC MIKROTIK S-35LC20D - 1.25G DDM SFP T1310/R1550 20Km</i><i class="instagram"> - 2 UN</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 299</i><i class="instagram"> - GBIC MIKROTIK - S-53LC20D - 1.25g DDM SFP T1550/R1310 - (AMARELO)</i><i class="instagram"> - 2 UN</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 300</i><i class="instagram"> - GBIC SFP 1.25G 1550nm 80km NEOPHOTONICS PT7620-51-3W SM</i><i class="instagram"> - 2 UN</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 301</i><i class="instagram"> - GBIC SFP+ 10G 10KM LC DDM 1310NM DUPLEX LR</i><i class="instagram"> - 2 UN</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 302</i><i class="instagram"> - GBIC SFP+ BX20-D 10G TX1330/RX1270nm 20km</i><i class="instagram"> - 2 UN</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 303</i><i class="instagram"> - GBIC SFP+ BX20-U 10G TX1270/RX1330nm 20km</i><i class="instagram"> - 2 UN</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 304</i><i class="instagram"> - GBIC WTD - RTXM191-418 1250M-10km - 1310nm - SM - ESFP - CLASS 1 LASER PRODUCT WHTD 356001</i><i class="instagram"> - 0 UN</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 305</i><i class="instagram"> - GBIC WXZTE - WXTRPGEAS1 - SM-10Km - 1310 - 1.5G-C - CLASS 1 LASER PRODUCT</i><i class="instagram"> - 1 UN</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 306</i><i class="instagram"> - MODULO XFP 10G LR 10KM LC 1310NM DUPLEX</i><i class="instagram"> - 2 UN</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 307</i><i class="instagram"> - GBIC ZTE SM-2kM-1310-2.5G-C 23000200 RTXM192-400 - CLASS 1 LASER</i><i class="instagram"> - 2 UN</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 308</i><i class="instagram"> - GBIC ZTE SM-80Km - 1510 - 155M-C - PT7620-31-2V-C51 - CLASS 1 LASER</i><i class="instagram"> - 1 UN</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 309</i><i class="instagram"> - PATCH CORD SM SC/UPC FC/PC S30-1S</i><i class="instagram"> - 9 UN</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 310</i><i class="instagram"> - PATCH CORD SM LC/UPC- SC/APC</i><i class="instagram"> - 4 UN</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 311</i><i class="instagram"> - PATCH CORD SM LC/UPC - LC/UPC</i><i class="instagram"> - 13 UN</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 312</i><i class="instagram"> - PATCH CORD SM SC/APC - SC/APC</i><i class="instagram"> - 1 UN</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 313</i><i class="instagram"> - PATCH CORD SM SC/UPC - LC/UPC</i><i class="instagram"> - 15 UN</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 314</i><i class="instagram"> - PATCH CORD SM SC/APC - SC/UPC</i><i class="instagram">ENDEREÇO</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 315</i><i class="instagram"> - PATCH CORD SM SC/UPC - SC/UPC</i><i class="instagram">ENDEREÇO</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 316</i><i class="instagram"> - MIKROTIK CCR1009-7G-1C- 1S+</i><i class="instagram"> - 1 UN</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 317</i><i class="instagram"> - MIKROTIK CCR1036-8G-2S+ EM L6</i><i class="instagram"> - 0 UN</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 318</i><i class="instagram"> - MIKROTIK CCR1072-1G-8S+</i><i class="instagram"> - 1 UN</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 319</i><i class="instagram"> - PATCH PANEL POE FAST 10 PORTAS</i><i class="instagram"> - 6 UN</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 320</i><i class="instagram"> - PATCH PANEL POE FAST 24 PORTAS</i><i class="instagram"> - 2 UN</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 321</i><i class="instagram"> - PATCH PANEL POE FAST 5 PORTAS</i><i class="instagram"> - 1 UN</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 322</i><i class="instagram"> - PATCH PANEL POE GIGA 12 PORTAS</i><i class="instagram"> - 4 UN</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 323</i><i class="instagram"> - PATCH PANEL POE GIGA 5 PORTAS</i><i class="instagram"> - 5 UN</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 324</i><i class="instagram"> - FONTE PACPON</i><i class="instagram"> - 0 UN</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 325</i><i class="instagram"> - FONTE POE 24V 0,3A</i><i class="instagram"> - 1 UN</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i style="font-size: 0px;">RUA 1</i><i class="instagram"> 326</i><i class="instagram"> - FONTE POE 24V 0,5A</i><i class="instagram"><br/>1-1-B/1-1</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 327</i><i class="instagram"> - FONTE POE 24V 1A</i><i class="instagram"> - 63 UN</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i style="font-size: 0px;">RUA 1</i><i class="instagram"> 328</i><i class="instagram"> - FONTE POE 25V 0,2A</i><i class="instagram"><br/>1-1-B/1-2</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i style="font-size: 0px;">RUA 1</i><i class="instagram"> 329</i><i class="instagram"> - FONTE POE 48V 0,5A</i><i class="instagram">1 - 1 - B / 1 - 3</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 330</i><i class="instagram"> - FONTE POE 50V 1,2A</i><i class="instagram"> - 1 UN</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 331</i><i class="instagram"> - FONTE NOBREAK EMERSON NETSURE211 C23 40AMP REDUNDANTE CHASSIS</i><i class="instagram"> - 1 UN</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 332</i><i class="instagram"> - MARCADOR ANILHA Nº0</i><i class="instagram"> - 13 PT</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 333</i><i class="instagram"> - MARCADOR ANILHA Nº1</i><i class="instagram"> - 6 PT</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 334</i><i class="instagram"> - MARCADOR ANILHA Nº2</i><i class="instagram"> - 7 PT</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 335</i><i class="instagram"> - MARCADOR ANILHA Nº3</i><i class="instagram"> - 7 PT</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 336</i><i class="instagram"> - MARCADOR ANILHA Nº4</i><i class="instagram"> - 6 PT</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 337</i><i class="instagram"> - MARCADOR ANILHA Nº5</i><i class="instagram"> - 5 PT</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 338</i><i class="instagram"> - MARCADOR ANILHA Nº6</i><i class="instagram"> - 6 PT</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 339</i><i class="instagram"> - MARCADOR ANILHA Nº7</i><i class="instagram"> - 6 PT</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 340</i><i class="instagram"> - MARCADOR ANILHA Nº8</i><i class="instagram"> - 7 PT</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 341</i><i class="instagram"> - MARCADOR ANILHA Nº9</i><i class="instagram"> - 7 PT</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i style="font-size: 0px;">RUA 0</i><i class="instagram"> 342</i><i class="instagram"> - MIGUELÃO</i><i class="instagram"><br/>0-5-B/1-1</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 343</i><i class="instagram"> - PARAFUSO SEXTAVADO 10mm</i><i class="instagram"> - 378 UN</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 344</i><i class="instagram"> - REGUA 10 TOMADAS</i><i class="instagram"> - 9 UN</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 345</i><i class="instagram"> - REGUA 2 TOMADAS</i><i class="instagram"> - 0 UN</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 346</i><i class="instagram"> - REGUA 3 TOMADAS 3P</i><i class="instagram"> - 26 UN</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i style="font-size: 0px;">RUA 0</i><i class="instagram"> 347</i><i class="instagram"> - FITA ISOLANTE PRETA 18MM x 20 MTS - </i><br/><i class="instagram">0-5-B/1-2</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 348</i><i class="instagram"> - 182 SUPORTE PROLONGADOR P/ ESPAÇADOR 74CM</i><i class="instagram"> - 6 UN</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 349</i><i class="instagram"> - 184 SUPORTE ESPAÇADOR 85CM</i><i class="instagram"> - 4 UN</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 350</i><i class="instagram"> - ADAPTADOR DE TOMADA 2 PINOS</i><i class="instagram"> - 135 UN</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 351</i><i class="instagram"> - ADAPTADOR POE</i><i class="instagram"> - 7 PAR</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 352</i><i class="instagram"> - ADESIVO DE SILICONE</i><i class="instagram"> - 33 UN</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 353</i><i class="instagram"> - AGUA SANITARIA 5LT</i><i class="instagram"> - 1 UN</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 354</i><i class="instagram"> - ÁLCOOL - BACTISAN 300ML</i><i class="instagram"> - 0 UN</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 355</i><i class="instagram"> - ÁLCOOL LÍQUIDO</i><i class="instagram"> - 6 UN</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 356</i><i class="instagram"> - ÁLCOOL ISOPROPÍLICO</i><i class="instagram"> - 6 UN</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 357</i><i class="instagram"> - ALICATE BICO CURVO</i><i class="instagram"> - 10 UN</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 358</i><i class="instagram"> - ALICATE CRIMPADOR TERMINAIS RJ45</i><i class="instagram"> - 7 UN</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 359</i><i class="instagram"> - ALICATE DECAPADOR P-22 BETTER</i><i class="instagram"> - 6 UN</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 360</i><i class="instagram"> - AN5516-06B MEDIA FBH 06U 2X HU1A+2X HSWA+2X PRTE</i><i class="instagram"> - 0 UN</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 361</i><i class="instagram"> - ARCO DE SERRA</i><i class="instagram"> - 0 UN</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 362</i><i class="instagram"> - BANDEJA P/ CAIXA ETK</i><i class="instagram"> - 21 UN</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 363</i><i class="instagram"> - BANDEJA P/ CAIXA FIBRACEM</i><i class="instagram"> - 13 UN</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 364</i><i class="instagram"> - BASTAO DE COLA QUENTE</i><i class="instagram"> - 119 UN</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 365</i><i class="instagram"> - BLOCO BASTIDOR EM INOX PARA 05 ENGATES M10 BJ-5A</i><i class="instagram"> - 2 UN</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 366</i><i class="instagram"> - BATERIA 9V</i><i class="instagram"> - 11 UN</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 367</i><i class="instagram"> - BATERIA ESTACIONARIA DF-700</i><i class="instagram"> - 15 UN</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 368</i><i class="instagram"> - BATERIA ESTACIONARIA DF-4001</i><i class="instagram"> - 4 UN</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 370</i><i class="instagram"> - BLOCO DE ENGATE RAPIDO TK - 10KF MUBE0010</i><i class="instagram"> - 2 UN</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 371</i><i class="instagram"> - BOBINA MINI PRINT</i><i class="instagram"> - 20 UN</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 372</i><i class="instagram"> - BOLSA BALDE</i><i class="instagram"> - 3 UN</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 373</i><i class="instagram"> - BUCHA FU 10</i><i class="instagram"> - 339 UN</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 374</i><i class="instagram"> - CABO DE FORÇA TRIPOLAR</i><i class="instagram">1 - 1 - A / 1 - 1</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 376</i><i class="instagram"> - CAIXA DE EMENDA INTERNA 120F FURUKAWA</i><i class="instagram"> - 3 UN</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 377</i><i class="instagram"> - CAIXA DE EMENDA INTERNA 12F FURUKAWA</i><i class="instagram"> - 0 UN</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 378</i><i class="instagram"> - CAIXA DE EMENDA INTERNO E04 FAST WIRELESS</i><i class="instagram"> - 5 UN</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 379</i><i class="instagram"> - CAIXA DE EMENDA INTERNO E24 FAST WIRELESS</i><i class="instagram"> - 10 UN</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 381</i><i class="instagram"> - CAIXA HERMÉTICA CINZA</i><i class="instagram"> - 31 UN</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 382</i><i class="instagram"> - CAIXA VOLT MODELO 3</i><i class="instagram"> - 12 UN</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 409</i><i class="instagram"> - CAMISA SOCIAL MASCULINA MANGA CURTA TAM M COR BRANCA</i><i class="instagram"> - 0 UN</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 411</i><i class="instagram"> - CANETA ESFEROGRÁFICA AZUL</i><i class="instagram"> - 81 UN</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 412</i><i class="instagram"> - CANETA ESFEROGRÁFICA PRETA</i><i class="instagram"> - 2 UN</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 413</i><i class="instagram"> - CANETA ESFEROGRÁFICA VERMELHA</i><i class="instagram"> - 1 UN</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 414</i><i class="instagram"> - CHAVE BIELA 11 M</i><i class="instagram"> - 3 UN</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 415</i><i class="instagram"> - CHAVE COMBINADA 13 MM</i><i class="instagram"> - 7 UN</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 416</i><i class="instagram"> - CINTO DE SEGURANÇA MG PQD 5 PTS ALMOFADADO</i><i class="instagram"> - 0 UN</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 417</i><i class="instagram"> - CINTO DE SEGURANÇA ULTRASAFE LIGTH T1</i><i class="instagram"> - 0 UN</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 418</i><i class="instagram"> - CLIPS Nº 01 GALVANIZADO</i><i class="instagram"> - 11 CX</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 419</i><i class="instagram"> - CONECTOR P/ TELEFONE 101-E BARGOA</i><i class="instagram"> - 3 UN</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 420</i><i class="instagram"> - CONVERSOR VOLT SAIDA 48V 5A</i><i class="instagram"> - 3 UN</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 421</i><i class="instagram"> - COPO DESCARTÁVEL ÁGUA 180 ML C/ 2500</i><i class="instagram"> - 13 PT</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 422</i><i class="instagram"> - COPO DESCARTÁVEL CAFÉ</i><i class="instagram"> - 25 PT</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 423</i><i class="instagram"> - CORDA ELASTICA</i><i class="instagram"> - 0 UN</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 425</i><i class="instagram"> - CTO FURUKAWA</i><i class="instagram"> - 0 UN</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 426</i><i class="instagram"> - CTO NAP (7 A 12) FIBRACEM</i><i class="instagram"> - 154 UN</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 427</i><i class="instagram"> - CUPULA AZUL</i><i class="instagram"> - 0 UN</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 428</i><i class="instagram"> - ALICATE DECAPADOR DE FIBRA ÓPTICA L-02</i><i class="instagram"> - 2 UN</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 429</i><i class="instagram"> - DECAPADOR HORIZONTAL E VERTICAL</i><i class="instagram"> - 0 UN</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 430</i><i class="instagram"> - DERIVADOR CEO 144F GROMMET REDONDA (8 ENT, 3 - 8)</i><i class="instagram"> - 56 UN</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 432</i><i class="instagram"> - DESINFETANTE</i><i class="instagram"> - 0 UN</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 433</i><i class="instagram"> - DIO 8 PORTAS</i><i class="instagram"> - 4 UN</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 434</i><i class="instagram"> - DIO CURTO BT72 72F SM SC-APC FURUKAWA</i><i class="instagram"> - 1 UN</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i style="font-size: 0px;">RUA 0</i><i class="instagram"> 435</i><i class="instagram"> - EMENDA RJ 45 RETO</i><i class="instagram"><br/>0-5-B/1-3</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 436</i><i class="instagram"> - ESPANADOR DE PÓ P/LIMPEZA</i><i class="instagram"> - 0 UN</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 437</i><i class="instagram"> - ESPONJA DUPLA FACE 3M</i><i class="instagram"> - 12 UN</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 438</i><i class="instagram"> - EXTINTOR - PÓ QUIMICO 4 KG</i><i class="instagram"> - 0 UN</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 439</i><i class="instagram"> - FILTRO PARA CAFÉ</i><i class="instagram"> - 29 CX</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 440</i><i class="instagram"> - FITA AUTOFUSÃO 19MM X 10M</i><i class="instagram"> - 0 RL</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 441</i><i class="instagram"> - FLEX WG SECT. UBR/PBR220 L=1M</i><i class="instagram"> - 1 UN</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 442</i><i class="instagram"> - FONTE 3A 12V BIVOLT ESTABILIZADA</i><i class="instagram"> - 0 UN</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 443</i><i class="instagram"> - FONTE 5A 12V 60W FITA SOM BIVOLT</i><i class="instagram"> - 23 UN</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 444</i><i class="instagram"> - GARRAFÃO TÉRMICO 5 LITROS</i><i class="instagram"> - 6 UN</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 445</i><i class="instagram"> - SFP S-RJ01 RJ45 S10/100/1000M COOPER (MK OEM)</i><i class="instagram"> - 4 UN</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 446</i><i class="instagram"> - GERADOR TG 2800 CXE TOYAMA</i><i class="instagram"> - 0 UN</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 447</i><i class="instagram"> - GPS TOMTOM 55</i><i class="instagram"> - 3 UN</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 448</i><i class="instagram"> - GRAMPO PARA GRAMPEADOR</i><i class="instagram"> - 6 CX</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 449</i><i class="instagram"> - IDENTIFICADOR P/ CABO</i><i class="instagram"> - 0 PT</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 450</i><i class="instagram"> - INJETOR POE GIGABIT</i><i class="instagram"> - 9 UN</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 451</i><i class="instagram"> - INTERFOLHA</i><i class="instagram"> - 3 PT</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 452</i><i class="instagram"> - LAMINA P/ ARCO DE SERRA RS 12 18</i><i class="instagram"> - 7 UN</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 453</i><i class="instagram"> - LAMPADA LED TUBULAR T8 18W 6500K BIVOLT 120CM</i><i class="instagram"> - 21 UN</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 454</i><i class="instagram"> - LÁPIS PRETO</i><i class="instagram"> - 0 UN</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 455</i><i class="instagram"> - LIMPA VIDRO</i><i class="instagram"> - 0 UN</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 456</i><i class="instagram"> - LOCALIZADOR TESTADOR DE CABO - WIRE TRACKER WH-806R</i><i class="instagram"> - 3 UN</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 457</i><i class="instagram"> - LUSTRA MOVEIS</i><i class="instagram"> - 0 UN</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 458</i><i class="instagram"> - LUVA DE SEGURANÇA TAMANHO M - PU PRETA</i><i class="instagram"> - 0 PAR</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 459</i><i class="instagram"> - LUVA PMI GLOVE ROPE TECH PRETA</i><i class="instagram"> - 0 PAR</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 460</i><i class="instagram"> - MEXEDOR DE CAFÉ</i><i class="instagram"> - 14 PT</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 461</i><i class="instagram"> - MOLHA DEDO</i><i class="instagram"> - 0 UN</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 462</i><i class="instagram"> - MOSQUETAO MULT. ACO TRV / ROSCA 25 KN</i><i class="instagram"> - 0 UN</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 463</i><i class="instagram"> - MOUSE</i><i class="instagram"> - 5 UN</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 465</i><i class="instagram"> - NOTEBOOK</i><i class="instagram"> - 0 UN</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 466</i><i class="instagram"> - ÓCULOS DE SEGURANÇA VENEZA AZUL ESP - KALIPSO</i><i class="instagram"> - 0 UN</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 467</i><i class="instagram"> - OLHAL RETO C/ ROSCA M12</i><i class="instagram"> - 0 UN</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 468</i><i class="instagram"> - PARAFUSO AUTO BROCANTE C/ ARRUELA</i><i class="instagram"> - 198 UN</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 469</i><i class="instagram"> - PARAFUSO EM "J" P/BAP</i><i class="instagram"> - 0 UN</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 470</i><i class="instagram"> - PARAFUSO M12X35</i><i class="instagram"> - 0 UN</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 471</i><i class="instagram"> - PASSA FIO 20 METROS</i><i class="instagram"> - 18 UN</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 473</i><i class="instagram"> - PIGTAIL SC/UPC SM 0.9MM 1 M</i><i class="instagram"> - 8 UN</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 474</i><i class="instagram"> - PILHA AA</i><i class="instagram"> - 126 UN</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 475</i><i class="instagram"> - PILHA PALITO AAA</i><i class="instagram"> - 70 UN</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 476</i><i class="instagram"> - PINCEL ATOMICO</i><i class="instagram"> - 0 UN</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 477</i><i class="instagram"> - PISTOLA DE COLA QUENTE</i><i class="instagram"> - 3 UN</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 478</i><i class="instagram"> - PLACA DE IDENTIFICAÇÃO</i><i class="instagram"> - 1423 UN</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 479</i><i class="instagram"> - PLUG FÊMEA 2 PINOS + 1T MONOFÁSICO</i><i class="instagram"> - 34 UN</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 480</i><i class="instagram"> - PLUG FEMEA 2 PINOS MONOFÁSICO</i><i class="instagram"> - 0 UN</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 481</i><i class="instagram"> - PLUG MACHO 2 PINOS + 1T MONOFÁSICO</i><i class="instagram"> - 33 UN</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 482</i><i class="instagram"> - PLUG MACHO 2 PINOS MONOFÁSICO</i><i class="instagram"> - 112 UN</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 483</i><i class="instagram"> - POLIA USCLIMB AÇO INOX FIXA PARA CORDA 22KN</i><i class="instagram"> - 0 UN</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 484</i><i class="instagram"> - PORCA GAIOLA</i><i class="instagram"> - 394 UN</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 485</i><i class="instagram"> - PRENSA CABO PG 21 3/4</i><i class="instagram"> - 0 UN</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 486</i><i class="instagram"> - PROTETOR DE EMENDA 60 X 1MM FIBRACEM</i><i class="instagram"> - 0 UN</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 487</i><i class="instagram"> - PROTETOR DE EMENDA FIBRA OPTICA 45 X 3,5 C/ FIO DE 1MM</i><i class="instagram"> - 0 UN</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 488</i><i class="instagram"> - QUADRO DE DISTRIBUIÇÃO QDCC PROTECO 48V/200A</i><i class="instagram"> - 2 UN</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 489</i><i class="instagram"> - REFIL PINCEL QUADRO PILOT AZUL</i><i class="instagram"> - 0 UN</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 490</i><i class="instagram"> - REFIL PINCEL QUADRO PILOT PRETO</i><i class="instagram"> - 0 UN</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 491</i><i class="instagram"> - REMOVEDOR</i><i class="instagram"> - 5 UN</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 492</i><i class="instagram"> - RODO P/ LIMPEZA</i><i class="instagram"> - 2 UN</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 493</i><i class="instagram"> - SABÃO EM PÓ</i><i class="instagram"> - 0 UN</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 494</i><i class="instagram"> - SACO PLASTICO A4 4 FUROS 0,12</i><i class="instagram"> - 0 PT</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 495</i><i class="instagram"> - SACO PLASTICO PARA BOLETO 12 X 25</i><i class="instagram"> - 0 KG</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 496</i><i class="instagram"> - SAQUINHO P/ABSORVENTE</i><i class="instagram"> - 0 PT</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 497</i><i class="instagram"> - SFP+ DAC 10gb - 3 Metros</i><i class="instagram"> - 9 UN</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 498</i><i class="instagram"> - SUPORTE DIELETRICO P/ RESERVA TECNICA SDRT</i><i class="instagram"> - 60 UN</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 499</i><i class="instagram"> - SUPORTE PARA CABO OPTICO SCO 1 DPR</i><i class="instagram"> - 0 UN</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 500</i><i class="instagram"> - SUPORTE REFORÇADO P/ BAP 14MM</i><i class="instagram"> - 0 UN</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 502</i><i class="instagram"> - TALABARTE MG DE POSICIONAMENTO SISTEMA AUTO</i><i class="instagram"> - 0 UN</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 503</i><i class="instagram"> - TC-GND TOUGH CABLE CONNECTOR</i><i class="instagram"> - 97 UN</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 504</i><i class="instagram"> - TECLADO</i><i class="instagram"> - 0 UN</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 505</i><i class="instagram"> - TESOURA PARA CORTE DO KEVLAR</i><i class="instagram"> - 0 UN</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 507</i><i class="instagram"> - CARTUCHO HP 951 XL (AMARELO)</i><i class="instagram"> - 2 UN</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 508</i><i class="instagram"> - CARTUCHO HP 951 XL (MAGENTA)</i><i class="instagram"> - 4 UN</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 509</i><i class="instagram"> - CARTUCHO HP 951 XL (CIANO)</i><i class="instagram"> - 2 UN</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 510</i><i class="instagram"> - TONER COMPATÍVEL HP CE285A (PRETO)</i><i class="instagram"> - 7 UN</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 511</i><i class="instagram"> - TONER P/ HP CE505X/CF280X (PRETO)</i><i class="instagram"> - 6 UN</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 512</i><i class="instagram"> - TONER COMPATÍVEL HP CF283A (PRETO)</i><i class="instagram"> - 17 UN</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 513</i><i class="instagram"> - TOUGHCABLE CONNECTOR</i><i class="instagram"> - 110 UN</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 514</i><i class="instagram"> - TRAVA QUEDAS NG P/ CORDA MOEQ OVAL ROSCA CA</i><i class="instagram"> - 0 UN</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 515</i><i class="instagram"> - TUBO 3/4 MEDIO</i><i class="instagram"> - 0 UN</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 516</i><i class="instagram"> - TUBO COM 2 PARAFUSOS 1.1/4"</i><i class="instagram"> - 0 UN</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 517</i><i class="instagram"> - TUBO MEDIO DE 1" COM 4 METROS</i><i class="instagram"> - 110 UN</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 518</i><i class="instagram"> - VASELINA INDUSTRIAL 440G</i><i class="instagram"> - 11 UN</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 519</i><i class="instagram"> - VASELINA INDUSTRIAL 90G</i><i class="instagram"> - 13 UN</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 520</i><i class="instagram"> - VASSOURA P/LIMPEZA</i><i class="instagram"> - 2 UN</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 521</i><i class="instagram"> - VEJA MULTIUSO</i><i class="instagram"> - 1 UN</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 522</i><i class="instagram"> - ORGANIZADOR DE CABOS DUPLA FACE - VELCRO</i><i class="instagram"> - 13 RL</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 523</i><i class="instagram"> - CABO EPR FLEX 90G 3 x 1,5mm 1KV</i><i class="instagram"> - 0 MT</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 524</i><i class="instagram"> - CABO LAN F UTP VULCANO CAT.5E 4PX24AWG CMX PT</i><i class="instagram"> - 1742 MT</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 525</i><i class="instagram"> - CABO LAN U UTP CAT.5E 4PX24AWG CMX PT</i><i class="instagram"> - 5284 MT</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 526</i><i class="instagram"> - CABO OPTICO CFOI-BLI- A/B-CM-01-BA-LSZH - REELEX 1000M (MICRO INDOOR LOW FRICTION</i><i class="instagram"> - 2719 CX</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 527</i><i class="instagram"> - CABO OPTICO CFOAC-BLI-A/B-CM-01-CO-LSZH PR - DROP FAST COMPACTO</i><i class="instagram"> - 52579 MT</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 528</i><i class="instagram"> - CABO PARALELO 300V 2 X 1,5 mm2</i><i class="instagram"> - 0 MT</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 529</i><i class="instagram"> - CABO U/UTP 24 AWGX4P CAT 5E</i><i class="instagram"> - 5296 MT</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 530</i><i class="instagram"> - FIO JUMPER 50x2</i><i class="instagram"> - 2 RL</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 531</i><i class="instagram"> - SAPATA P/ ESCADA EXTENSIVEL</i><i class="instagram"> - 6 UN</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 532</i><i class="instagram"> - ESTILE 25MM</i><i class="instagram"> - 0 UN</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 533</i><i class="instagram"> - CHAVE CANHÃO 8MM</i><i class="instagram"> - 9 UN</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 534</i><i class="instagram"> - LAMINA ESTILETE 28MM</i><i class="instagram"> - 0 UN</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 535</i><i class="instagram"> - CABO CCI</i><i class="instagram"> - 0 MT</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 537</i><i class="instagram"> - INVERSOR 48V/220-3KVA PROTECO</i><i class="instagram"> - 1 UN</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 538</i><i class="instagram"> - RETIFICADORA PROTECO SR60A 48V 3240W</i><i class="instagram"> - 1 UN</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 539</i><i class="instagram"> - SWITCH CISCO SG500-28P-K9-BR</i><i class="instagram"> - 0 UN</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 540</i><i class="instagram"> - IDU SIAE ALCplus2E</i><i class="instagram"> - 1 UN</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 541</i><i class="instagram"> - BATERIA ESTACIONARIA DF-500</i><i class="instagram"> - 1 UN</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 543</i><i class="instagram"> - GRAMPEADOR</i><i class="instagram"> - 6 UN</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 544</i><i class="instagram"> - TERMINAL PRÉ ISOLADO TIPO ANEL RV5.5-6 M6</i><i class="instagram"> - 574 UN</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 545</i><i class="instagram"> - TERMINAL PRÉ ISOLADO TIPO ANEL RVS2-4 M4</i><i class="instagram"> - 0 UN</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 546</i><i class="instagram"> - TERMINAL PRÉ ISOLADO TIPO ANEL RVS1.25-4 M4</i><i class="instagram"> - 98 UN</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 547</i><i class="instagram"> - TERMINAL PRÉ ISOLADO TIPO ANEL RVS5.5-4 M4</i><i class="instagram"> - 100 UN</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 548</i><i class="instagram"> - TERMINAL PRÉ ISOLADO TIPO ANEL RV3.5-8 M8</i><i class="instagram"> - 63 UN</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 549</i><i class="instagram"> - TERMINAL PRÉ ISOLADO TIPO ANEL RV5.5-10 M8</i><i class="instagram"> - 300 UN</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 550</i><i class="instagram"> - TERMINAL PRÉ-ISOLADO TIPO FORQUILHA SV2-4 M4</i><i class="instagram"> - 500 UN</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 551</i><i class="instagram"> - TERMINAL PRÉ-ISOLADO TIPO FORQUILHA SV1.25-4 M4</i><i class="instagram"> - 66 UN</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 552</i><i class="instagram"> - TERMINAL PRÉ-ISOLADO TIPO FORQUILHA SV5.5-4 M4</i><i class="instagram"> - 100 UN</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 553</i><i class="instagram"> - TERMINAL PRÉ-ISOLADO TIPO PINO PTV 5.5-13</i><i class="instagram"> - 100 UN</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 554</i><i class="instagram"> - TERMINAL PRÉ-ISOLADO TIPO PINO PTV 2-10</i><i class="instagram"> - 72 UN</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 555</i><i class="instagram"> - TERMINAL PRÉ-ISOLADO TIPO PINO PTV 1.25-12</i><i class="instagram"> - 73 UN</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 556</i><i class="instagram"> - TERMINAL PRÉ-ISOLADO TUBULAR TIPO ILHÓS SIMPLES E2508</i><i class="instagram"> - 426 UN</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 557</i><i class="instagram"> - TERMINAL PRÉ-ISOLADO TUBULAR TIPO ILHÓS SIMPLES E7508</i><i class="instagram"> - 96 UN</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 558</i><i class="instagram"> - TERMINAL PRÉ-ISOLADO TUBULAR TIPO ILHÓS SIMPLES E1008</i><i class="instagram"> - 78 UN</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 559</i><i class="instagram"> - TERMINAL PRÉ-ISOLADO TUBULAR TIPO ILHÓS SIMPLES E0508</i><i class="instagram"> - 100 UN</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 560</i><i class="instagram"> - TERMINAL PRÉ-ISOLADO TUBULAR TIPO ILHÓS SIMPLES E1508</i><i class="instagram"> - 429 UN</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 561</i><i class="instagram"> - TERMINAL PRÉ-ISOLADO TUBULAR TIPO ILHÓS SIMPLES E1612</i><i class="instagram"> - 100 UN</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 562</i><i class="instagram"> - TERMINAL PRÉ-ISOLADO TUBULAR TIPO ILHÓS SIMPLES E2516</i><i class="instagram"> - 100 UN</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 563</i><i class="instagram"> - TERMINAL PRÉ-ISOLADO TUBULAR TIPO ILHÓS SIMPLES E3516</i><i class="instagram"> - 100 UN</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 564</i><i class="instagram"> - TERMINAL PRÉ-ISOLADO TUBULAR TIPO ILHÓS SIMPLES E1012</i><i class="instagram"> - 100 UN</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 565</i><i class="instagram"> - TERMINAL PRÉ-ISOLADO TUBULAR TIPO ILHÓS SIMPLES E4010</i><i class="instagram"> - 100 UN</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 566</i><i class="instagram"> - CAPACETE ABA TOTAL MSA</i><i class="instagram"> - 0 UN</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 567</i><i class="instagram"> - PNEU 165/70/R13 79T</i><i class="instagram"> - 0 UN</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 568</i><i class="instagram"> - ALICATE DE CORTE DIAGONAL</i><i class="instagram"> - 9 UN</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 569</i><i class="instagram"> - CHAVE DE FENDA</i><i class="instagram"> - 20 UN</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 570</i><i class="instagram"> - BASTIDOR PARA 10 BLOCOS EM INOX</i><i class="instagram"> - 2 UN</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 572</i><i class="instagram"> - Ubs_RioAcima_10_mega</i><i class="instagram"> - 0 SR</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 590</i><i class="instagram"> - MAQUINA DE CINTAR POSTE</i><i class="instagram"> - 0 PC</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 591</i><i class="instagram"> - CARTUCHO HP 664XL (PRETO)</i><i class="instagram"> - 3 UN</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 592</i><i class="instagram"> - CARTUCHO HP 664XL (COLORIDO)</i><i class="instagram"> - 2 UN</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 593</i><i class="instagram"> - PILHA A23 12V</i><i class="instagram"> - 8 UN</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 594</i><i class="instagram"> - CAMISA MANGA LONGA TAM P COR HORTENCIA</i><i class="instagram"> - 20 UN</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 595</i><i class="instagram"> - CAMISA MANGA LONGA TAM M COR HORTENCIA</i><i class="instagram"> - 24 UN</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 596</i><i class="instagram"> - CAMISA MANGA LONGA TAM GG COR HORTENCIA</i><i class="instagram"> - 41 UN</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 597</i><i class="instagram"> - CAMISA MANGA LONGA TAM G COR HORTENCIA</i><i class="instagram"> - 18 UN</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 598</i><i class="instagram"> - CAMISA MANGA CURTA POLO TAM G COR HORTENCIA</i><i class="instagram"> - 5 UN</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 599</i><i class="instagram"> - CAMISA MANGA CURTA POLO TAM GG COR HORTENCIA</i><i class="instagram"> - 3 UN</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 601</i><i class="instagram"> - CAMISA MANGA CURTA POLO TAM P COR HORTENCIA</i><i class="instagram"> - 2 UN</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 602</i><i class="instagram"> - CAMISETA MANGA LONGA TAM G COR VERDE PANTONI</i><i class="instagram"> - 9 UN</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 606</i><i class="instagram"> - CAMISETA MANGA LONGA TAM P COR VERDE PANTONI</i><i class="instagram"> - 1 UN</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 607</i><i class="instagram"> - CAMISETA MANGA LONGA TAM M COR VERDE PANTONI</i><i class="instagram"> - 10 UN</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 608</i><i class="instagram"> - CALÇA ELASTICO 4 BOLSOS TAM GG COR BRIM PETROLEO</i><i class="instagram"> - 25 UN</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 609</i><i class="instagram"> - CALÇA ELASTICO 4 BOLSO TAM G COR BRIM PETROLEO</i><i class="instagram"> - 3 UN</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 610</i><i class="instagram"> - CALÇA ELASTICO 4 BOLSOS TAM M COR BRIM PETROLEO</i><i class="instagram"> - 40 UN</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 611</i><i class="instagram"> - CALÇA ELASTICO 4 BOLSOS TAM P COR BRIM PETROLEO</i><i class="instagram"> - 17 UN</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 612</i><i class="instagram"> - CALÇA ELASTICO 4 BOLSOS TAM EG COR BRIM PETROLEO</i><i class="instagram"> - 3 UN</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 613</i><i class="instagram"> - CAMISA POLO TAM M COR VERDFE BANDEIRA</i><i class="instagram"> - 4 UN</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 614</i><i class="instagram"> - CAMISA POLO TAM G COR VERDE BANDEIRA</i><i class="instagram"> - 20 UN</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 615</i><i class="instagram"> - CAMISA POLO TAM GG COR VERDE BANDEIRA</i><i class="instagram"> - 3 UN</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 616</i><i class="instagram"> - CAMISA POLO TAM XGG COR VERDE BANDEIRA</i><i class="instagram"> - 4 UN</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 617</i><i class="instagram"> - CAMISA POLO TAM PP COR LARANJA</i><i class="instagram"> - 4 UN</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 618</i><i class="instagram"> - CAMISA POLO TAM P COR LARANJA</i><i class="instagram"> - 26 UN</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 619</i><i class="instagram"> - CAMISA PLO TAM M COR LARANJA</i><i class="instagram"> - 7 UN</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 620</i><i class="instagram"> - CAMISA POLO TAM G COR LARANJA</i><i class="instagram"> - 14 UN</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 621</i><i class="instagram"> - CAMISA POLO TAM GG COR LARANJA</i><i class="instagram"> - 9 UN</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 622</i><i class="instagram"> - CAMISA POLO TAM EG COR LARANJA</i><i class="instagram"> - 3 UN</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 623</i><i class="instagram"> - CAMISA POLO TAM P COR VERMELHA</i><i class="instagram"> - 2 UN</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 624</i><i class="instagram"> - CAMISA POLO TAM M COR VERMELHA</i><i class="instagram"> - 1 UN</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 625</i><i class="instagram"> - CAMISA POLO TAM G COR VERMELHA</i><i class="instagram"> - 3 UN</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 628</i><i class="instagram"> - CAMISA POLO TAM PP COR ROXA</i><i class="instagram"> - 2 UN</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 629</i><i class="instagram"> - CAMISA POLO TAM P COR ROXA</i><i class="instagram"> - 2 UN</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 630</i><i class="instagram"> - CAMISA POLO TAM M COR ROXA</i><i class="instagram"> - 3 UN</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 632</i><i class="instagram"> - CAMISA POLO TAM P COR AMARELA</i><i class="instagram"> - 3 UN</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 633</i><i class="instagram"> - CAMISA POLO TAM G COR AMARELA</i><i class="instagram"> - 2 UN</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 635</i><i class="instagram"> - APAGAR PRODUTO</i><i class="instagram"> - 0 UN</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 636</i><i class="instagram"> - CAMISA SOCIAL MASCULINA MANGA LONGA TAM G COR BRANCA</i><i class="instagram"> - 4 UN</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 665</i><i class="instagram"> - CAMISA SOCIAL FEMININA MANGA LONGA TAM PP COR BRANCA</i><i class="instagram"> - 1 UN</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 667</i><i class="instagram"> - CAMISA MANGA CURTA FEMININA TAM 40 COR BRANCA</i><i class="instagram"> - 0 UN</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 668</i><i class="instagram"> - CAMISA SOCIAL FEMININA MANGA LONGA TAM P COR BRANCA</i><i class="instagram"> - 1 UN</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 669</i><i class="instagram"> - BATA FEMININA TAM P COR BRANCA</i><i class="instagram"> - 3 UN</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 670</i><i class="instagram"> - BATA FEMININA TAM M COR BRANCA</i><i class="instagram"> - 3 UN</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 671</i><i class="instagram"> - BATA FEMININA TAM G COR BRANCA</i><i class="instagram"> - 2 UN</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 672</i><i class="instagram"> - CAMISA POLO TAM PP COR JUMBO</i><i class="instagram"> - 3 UN</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 674</i><i class="instagram"> - CAMISA POLO TAM PP COR LARANJA E BRANCO</i><i class="instagram"> - 5 UN</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 675</i><i class="instagram"> - CAMISA POLO TAM P COR LARANJA E BRANCO</i><i class="instagram"> - 1 UN</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 676</i><i class="instagram"> - CAMISA POLO TAM G COR LARANJA E BRANCO</i><i class="instagram"> - 4 UN</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 678</i><i class="instagram"> - CAMISA POLO TAM GG COR LARANJA E BRANCO</i><i class="instagram"> - 4 UN</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 679</i><i class="instagram"> - CAMISA POLO TAM M COR LARANJA E BRANCO</i><i class="instagram"> - 2 UN</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 680</i><i class="instagram"> - VESTIDO TUBINHO TAM 42 COR PRETO</i><i class="instagram"> - 1 UN</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 681</i><i class="instagram"> - FITA ISOLANTE AZUL</i><i class="instagram"> - 10 UN</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 682</i><i class="instagram"> - FITA ISOLANTE VERMELHA</i><i class="instagram"> - 10 UN</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 683</i><i class="instagram"> - REPETIDOR WIFI TL-WA855RE</i><i class="instagram"> - 12 UN</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 685</i><i class="instagram"> - CALÇA SOCIAL MASCULINA TAM P COR PRETO</i><i class="instagram"> - 5 UN</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 686</i><i class="instagram"> - CALÇA SOCIAL MASCULINA TAM M COR PRETO</i><i class="instagram"> - 6 UN</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 687</i><i class="instagram"> - CALÇA SOCIAL MASCULINA TAM G COR PRETO</i><i class="instagram"> - 4 UN</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 688</i><i class="instagram"> - CALÇA SOCIAL MASCULINA TAM GG COR PRETO</i><i class="instagram"> - 7 UN</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 689</i><i class="instagram"> - CALÇA SOCIAL FEMININA TAM P COR PRETO</i><i class="instagram"> - 6 UN</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 692</i><i class="instagram"> - CALÇA SOCIAL FEMININA TAM M COR PRETO</i><i class="instagram"> - 6 UN</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 693</i><i class="instagram"> - CALÇA SOCIAL FEMININA TAM G COR PRETO</i><i class="instagram"> - 1 UN</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 694</i><i class="instagram"> - CALÇA SOCILA FEMININA TAM GG COR PRETO</i><i class="instagram"> - 0 UN</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 696</i><i class="instagram"> - CALÇA SOCIAL FEMININA TAM GG COR PRETO</i><i class="instagram"> - 5 UN</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 697</i><i class="instagram"> - JAQUETA MASCULINA TAM P COR PRETO</i><i class="instagram"> - 1 UN</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 700</i><i class="instagram"> - JAQUETA MASCULINA TAM XG2 COR PRETO</i><i class="instagram"> - 1 UN</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 701</i><i class="instagram"> - JAQUETA FEMININA TAM P COR PRETO</i><i class="instagram"> - 2 UN</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 702</i><i class="instagram"> - JAQUETA FEMININA TAM G COR PRETA</i><i class="instagram"> - 4 UN</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 703</i><i class="instagram"> - JAQUETA FEMININA TAM GG COR PRETA</i><i class="instagram"> - 0 UN</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 706</i><i class="instagram"> - CAMISETA MANGA LONGA TAM EG COR VERDE PANTONI</i><i class="instagram"> - 13 UN</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 707</i><i class="instagram"> - CONDUÍTE ELETRODUTO 1 POLEGADA P/ CORRUGADO</i><i class="instagram"> - 47 MT</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 708</i><i class="instagram"> - ROTEADOR TP-LINK ARCHER C60 TPN0046 1350Mbps</i><i class="instagram"> - 18 UN</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 709</i><i class="instagram"> - BOBINA TÉRMICA 57X18 P/ MAQUINA DE CARTÃO</i><i class="instagram"> - 62 UN</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 710</i><i class="instagram"> - GBIC SFP+ 10G LRM 1310nm 220m DUPLEX</i><i class="instagram"> - 2 UN</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 711</i><i class="instagram"> - GBIC SFP+ 10G T1270/R1330nm 10KM BIDI S+23LC10D SM (PAR PRETO)</i><i class="instagram"> - 0 UN</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 712</i><i class="instagram"> - GBIC S+32LC10D 10G Tx1330/Rx1270nm 10Km BIDI SFP+</i><i class="instagram"> - 2 UN</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 713</i><i class="instagram"> - CAMISA MANGA LONGA TAM G COR AZUL MARINHO</i><i class="instagram"> - 4 UN</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 714</i><i class="instagram"> - CAMISA MANGA LONGA TAM GG COR AZUL MARINHO</i><i class="instagram"> - 5 UN</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 717</i><i class="instagram"> - CONVERSOR DE MEDIA TP-LINK MC200CM GIGABIT MULTI-MODO</i><i class="instagram"> - 2 UN</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 718</i><i class="instagram"> - ROTEADOR D-LINK DIR-825 AC 1200MBPS DUAL BAND WI-FI GIGABIT</i><i class="instagram"> - 12 UN</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 123</i><i class="instagram"> - PRATO PARA LITEBEAM M5 5GHZ</i><i class="instagram">1 - 1 - A / CHÃO</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 720</i><i class="instagram"> - GBIC MIKROTIK S-RJ01 - SFP to RJ45 10/100/1G ETHERNET</i><i class="instagram"> - 1 UN</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 724</i><i class="instagram"> - ROTEADOR TP-LINK TL-WR720N 150 MBPS</i><i class="instagram"> - 28 UN</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 725</i><i class="instagram"> - GBIC SFP+ 10G SR 850nm 300m 10G SFP+</i><i class="instagram"> - 2 UN</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 726</i><i class="instagram"> - DIO 12 PORTAS</i><i class="instagram"> - 0 UN</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 727</i><i class="instagram"> - ANTENA POWERBEAM 300 5GHZ 22DBI</i><i class="instagram"> - 1 UN</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 728</i><i class="instagram"> - Roteador VPN Broadband Gigabit SafeStream TL-R600VPN</i><i class="instagram"> - 2 UN</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 729</i><i class="instagram"> - WEBCAM HD 4310</i><i class="instagram"> - 1 UN</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 730</i><i class="instagram"> - Pen Drive Kingston DataTraveler USB 3.0 16GB - DT100G3/16GB</i><i class="instagram"> - 0 UN</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 731</i><i class="instagram"> - FONTE NOBREAK PROTECO MP24/10-R2</i><i class="instagram"> - 2 UN</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 733</i><i class="instagram"> - ADAPTADOR DE TOMADA 3 PINOS</i><i class="instagram"> - 2 UN</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 734</i><i class="instagram"> - TECLADO PARA DESKTOP</i><i class="instagram"> - 11 UN</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 735</i><i class="instagram"> - PASTA PARA NOTEBOOK 10"</i><i class="instagram"> - 7 UN</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 736</i><i class="instagram"> - MOUSE PAD MP*100 OEX</i><i class="instagram"> - 1 UN</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 737</i><i class="instagram"> - JAQUETA MASCULINA TAM M COR PRETO</i><i class="instagram"> - 0 UN</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 738</i><i class="instagram"> - CADEADO ARTICULADO</i><i class="instagram"> - 6 UN</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 739</i><i class="instagram"> - FECHO LINGUETA COM CHAVE YALE - MODELO FLY-01</i><i class="instagram"> - 60 UN</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 740</i><i class="instagram"> - FRASCO PET 30ML C/ VÁLVULA SPRAY</i><i class="instagram"> - 4 UN</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 742</i><i class="instagram"> - CAMISA POLO TAM M COR LARANJA</i><i class="instagram"> - 10 UN</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 743</i><i class="instagram"> - CAMISA MANGA CURTA TAM G ROXA</i><i class="instagram"> - 0 UN</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 744</i><i class="instagram"> - PNEU 175/65/R14 82T</i><i class="instagram"> - 0 UN</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 745</i><i class="instagram"> - HD Desktop WD 160GB Sata 3 7200RPM</i><i class="instagram"> - 2 UN</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 746</i><i class="instagram"> - CAMISA POLO TAM P COR VERDE BANDEIRA</i><i class="instagram"> - 10 UN</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 747</i><i class="instagram"> - CAMISA POLO TAM M COR VERDE BANDEIRA</i><i class="instagram"> - 6 UN</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 748</i><i class="instagram"> - CAMISA SOCIAL FEMININA MANGA LONGA TAM M COR BRANCA</i><i class="instagram"> - 1 UN</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 749</i><i class="instagram"> - CAMISA SOCIAL MANGA CURTA FEMININA TAM P COR BRANCA</i><i class="instagram"> - 3 UN</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 750</i><i class="instagram"> - CAMISA SOCIAL MANGA CURTA FEMININA TAM M COR BRANCA</i><i class="instagram"> - 3 UN</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 751</i><i class="instagram"> - CALÇA SOCIAL FEMININA TAM PP COR PRETO</i><i class="instagram"> - 5 UN</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 752</i><i class="instagram"> - CAMISA POLO TAM P COR JUMBO</i><i class="instagram"> - 4 UN</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 753</i><i class="instagram"> - CAMISA POLO TAM G COR ROXA</i><i class="instagram"> - 4 UN</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 754</i><i class="instagram"> - VESTIDO TUBINHO TAM PP COR PRETO</i><i class="instagram"> - 1 UN</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 755</i><i class="instagram"> - NOTEBOOK ACER ASPIRE PROC 13-6006U - 4GB - 500GB</i><i class="instagram"> - 2 UN</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 760</i><i class="instagram"> - SPRAY ANTISSÉPTICO</i><i class="instagram"> - 0 UN</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 761</i><i class="instagram"> - GBIC RTXM167-526</i><i class="instagram"> - 0 UN</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 762</i><i class="instagram"> - FINISAR - FTLX8571D3BNL - 850nm - CLASS 1 21CRF1040.10</i><i class="instagram"> - 0 UN</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 763</i><i class="instagram"> - PORTA-LÁPIS</i><i class="instagram"> - 0 UN</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 764</i><i class="instagram"> - CARTUCHO HP 950 XL (PRETO)</i><i class="instagram"> - 1 UN</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 765</i><i class="instagram"> - CX P/ QUADRO DE COMANDO 300x200x200</i><i class="instagram"> - 50 UN</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 766</i><i class="instagram"> - CX P/ QUADRO DE COMANDO 300x300x200</i><i class="instagram"> - 50 UN</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 767</i><i class="instagram"> - CABO F/UTP CAT.5E 24AWGXP+1PX0,75MM2 PT</i><i class="instagram"> - 453 MT</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 768</i><i class="instagram"> - SMARTPHONE MOTOROLA G5S</i><i class="instagram"> - 1 UN</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 769</i><i class="instagram"> - SMARTPHONE LG K4</i><i class="instagram"> - 1 UN</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 770</i><i class="instagram"> - SMARTPHONE SAMSUNG GALAXY J5 PRIME</i><i class="instagram"> - 2 UN</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 771</i><i class="instagram"> - SMARTPHONE TP-LINK NEFFOS C5L</i><i class="instagram"> - 1 UN</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 772</i><i class="instagram"> - CELULAR LG B220</i><i class="instagram"> - 8 UN</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 773</i><i class="instagram"> - CELULAR LG A275</i><i class="instagram"> - 1 UN</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 774</i><i class="instagram"> - CELULAR NOKIA C2-01.5</i><i class="instagram"> - 1 UN</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 775</i><i class="instagram"> - CELULAR NOKIA 208.2</i><i class="instagram"> - 1 UN</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 776</i><i class="instagram"> - ÓCULOS DE PROTEÇÃO VISION 3000</i><i class="instagram"> - 4 UN</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 777</i><i class="instagram"> - PROTETOR AUDITIVO MODELO-K10 - KALIPSO</i><i class="instagram"> - 5 UN</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 778</i><i class="instagram"> - ÓCULOS DE PROTEÇÃO INCOLOR LEOPARDO - KALIPSO</i><i class="instagram"> - 8 UN</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 779</i><i class="instagram"> - ÓCULOS DE SEGURANÇA ANTI EMBAÇANTE TARGA CINZA</i><i class="instagram"> - 1 UN</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 780</i><i class="instagram"> - LUVAS PROMAT MULTITATO 750 PT - TAMANHO 8</i><i class="instagram"> - 0 UN</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 781</i><i class="instagram"> - LUVAS PROMAT MULTITATO 750 PT - TAMANHO 9</i><i class="instagram"> - 0 UN</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 782</i><i class="instagram"> - LUVAS PROMAT MULTITATO 750 PT - TAMANHO 10</i><i class="instagram"> - 0 UN</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 783</i><i class="instagram"> - CORDA DE SEGURANÇA NR18 (M.T.E) NYLON POLIAMIDA DIÂMETRO 12,0mm</i><i class="instagram"> - 1 UN</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 784</i><i class="instagram"> - ABAFADOR DE RÚIDOS BRASFORT TIPO CONCHA</i><i class="instagram"> - 2 UN</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 785</i><i class="instagram"> - REGUA 2 TOMADAS 3P</i><i class="instagram"> - 3 UN</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 786</i><i class="instagram"> - LUVAS DE VAQUETA</i><i class="instagram"> - 36 PAR</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 787</i><i class="instagram"> - ALICATE UNIVERSAL</i><i class="instagram"> - 5 UN</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 788</i><i class="instagram"> - ALCOOL EM GEL</i><i class="instagram"> - 4 UN</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 789</i><i class="instagram"> - PASTA EM L TRANSPARENTE</i><i class="instagram"> - 20 UN</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 790</i><i class="instagram"> - CARTUCHO HP 74XL (PRETO)</i><i class="instagram"> - 1 UN</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 791</i><i class="instagram"> - CARTUCHO HP 75XL (COLORIDO)</i><i class="instagram"> - 0 UN</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 792</i><i class="instagram"> - TESOURA</i><i class="instagram"> - 5 UN</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 793</i><i class="instagram"> - DUREX 48mm x 50m</i><i class="instagram"> - 3 UN</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 794</i><i class="instagram"> - DUREX 12mm x 30M</i><i class="instagram"> - 9 UN</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 795</i><i class="instagram"> - ELASTICO BAGAGEIRO</i><i class="instagram"> - 56 UN</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 796</i><i class="instagram"> - SUPORTE PARA FITA ADESIVA</i><i class="instagram"> - 1 UN</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 797</i><i class="instagram"> - CAMISA POLO TAM M COR JUMBO</i><i class="instagram"> - 4 UN</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 799</i><i class="instagram"> - CARTAO DE PONTO</i><i class="instagram"> - 400 UN</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 800</i><i class="instagram"> - CHAVE BIELA 10 M</i><i class="instagram"> - 2 UN</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 801</i><i class="instagram"> - CHAVE BIELA 15 M</i><i class="instagram"> - 1 UN</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 802</i><i class="instagram"> - MARTELO</i><i class="instagram"> - 6 UN</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 803</i><i class="instagram"> - SERROTE</i><i class="instagram"> - 1 UN</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 804</i><i class="instagram"> - TRENA MANUAL</i><i class="instagram"> - 3 UN</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 805</i><i class="instagram"> - CHAVE PHILIPS</i><i class="instagram"> - 13 UN</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 806</i><i class="instagram"> - CHAVE CANHÃO 6MM</i><i class="instagram"> - 5 UN</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 807</i><i class="instagram"> - CHAVE CANHÃO 7MM</i><i class="instagram"> - 1 UN</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 808</i><i class="instagram"> - CHAVE CANHÃO 10MM</i><i class="instagram"> - 10 UN</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 809</i><i class="instagram"> - CHAVE CANHÃO 11MM</i><i class="instagram"> - 2 UN</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 810</i><i class="instagram"> - PARAFUSO SOBERBA AUTO BRANCATE</i><i class="instagram"> - 575 UN</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 811</i><i class="instagram"> - VERIFONE C680</i><i class="instagram"> - 2 UN</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 812</i><i class="instagram"> - ALÇA PRÉ FORMADA 8mm a 8,6mm</i><i class="instagram"> - 0 UN</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 813</i><i class="instagram"> - TERMINAL PRÉ-ISOLADO TUBULAR TIPO ILHÓS SIMPLES E5020</i><i class="instagram"> - 101 UN</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 814</i><i class="instagram"> - TERMINAL PRÉ-ISOLADO TUBULAR TIPO ILHÓS SIMPLES E6012</i><i class="instagram"> - 90 UN</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 815</i><i class="instagram"> - GABARITO GREATEK</i><i class="instagram"> - 27 UN</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 816</i><i class="instagram"> - VEJA LIMPA-VIDROS</i><i class="instagram"> - 2 UN</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 817</i><i class="instagram"> - PÁ DE LIXO</i><i class="instagram"> - 2 UN</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 818</i><i class="instagram"> - LUVAS DESCARTÁVEIS</i><i class="instagram"> - 0 CX</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 819</i><i class="instagram"> - FLANELAS</i><i class="instagram"> - 0 UN</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 820</i><i class="instagram"> - ENVELOPES DE PAPEL 240X340cm</i><i class="instagram"> - 251 UN</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 822</i><i class="instagram"> - PRANCHETA DE ESCRITÓRIO OFÍCIO A4</i><i class="instagram"> - 2 UN</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 823</i><i class="instagram"> - DIO - DISTRIBUIDOR INTERNO OPTICO - 36F</i><i class="instagram"> - 1 UN</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 824</i><i class="instagram"> - CAMISA SOCIAL MANGA LONGA FEMININA PP</i><i class="instagram"> - 3 UN</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 825</i><i class="instagram"> - CAMISA SOCIAL MANGA LONGA FEMININA P</i><i class="instagram"> - 3 UN</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 826</i><i class="instagram"> - CAMISA SOCIAL MANGA LONGA FEMININA M</i><i class="instagram"> - 3 UN</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 827</i><i class="instagram"> - CAMISA SOCIAL MANGA LONGA FEMININA G</i><i class="instagram"> - 2 UN</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 828</i><i class="instagram"> - CAMISA MANGA LONGA TAM P COR AZUL MARINHO</i><i class="instagram"> - 7 UN</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 829</i><i class="instagram"> - CAMISA MANGA LONGA TAM M COR AZUL MARINHO</i><i class="instagram"> - 12 UN</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 830</i><i class="instagram"> - ALICATE REBITADOR</i><i class="instagram"> - 2 UN</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 832</i><i class="instagram"> - CALCULADORA DE MESA</i><i class="instagram"> - 3 UN</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 833</i><i class="instagram"> - PASTA ABA ELASTICO OFICIO</i><i class="instagram"> - 10 UN</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 835</i><i class="instagram"> - NECESSAIRE MASCULINA</i><i class="instagram"> - 0 UN</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 837</i><i class="instagram"> - LUVA PU PRETA G KALIPSO</i><i class="instagram"> - 5 UN</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 838</i><i class="instagram"> - LUVA PU PRETA XXG KALIPSO</i><i class="instagram"> - 5 UN</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 839</i><i class="instagram"> - LUBRIFICANTE</i><i class="instagram"> - 3 UN</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 840</i><i class="instagram"> - POST-IT</i><i class="instagram"> - 1 UNI</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 841</i><i class="instagram"> - PASTA CATALOGO PP</i><i class="instagram"> - 14 UNI</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 843</i><i class="instagram"> - ONU GPON HG8546M (1 GE+3FE+1POT+USB+WIFI) HUAWEI</i><i class="instagram"> - 48 UN</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 844</i><i class="instagram"> - FONTE NOBREAK EMERSON NETSURE212 C23 40AMP REDUNDANTE CHASSIS</i><i class="instagram"> - 2 UN</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 848</i><i class="instagram"> - AÇÚCAR 1 KG</i><i class="instagram"> - 40 UN</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 849</i><i class="instagram"> - COLA EM BASTÃO</i><i class="instagram"> - 12 UN</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 850</i><i class="instagram"> - ENVELOPE OFICIO 114x229 HOLERITE</i><i class="instagram"> - 405 CX</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 851</i><i class="instagram"> - GUARDANAPO</i><i class="instagram"> - 17 UN</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 852</i><i class="instagram"> - BENJAMIN 3 SAÍDAS</i><i class="instagram"> - 2 UN</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 853</i><i class="instagram"> - PRODUTO SEM CADASTRO - PEDIDO DE COMPRA</i><i class="instagram"> - 467 UN</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 854</i><i class="instagram"> - SPLITTER 1x8 DESCONECTORIZADO</i><i class="instagram"> - 10 UN</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 855</i><i class="instagram"> - BOBINA DE PAPEL TÉRMICO 57MM X 40MTS</i><i class="instagram"> - 59 UN</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 856</i><i class="instagram"> - EPSON L4150 - ECO TANQUE 504 (PRETO)</i><i class="instagram"> - 1 UN</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 857</i><i class="instagram"> - EPSON L450 - ECO TANQUE 504 (AMARELO)</i><i class="instagram"> - 1 UN</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 858</i><i class="instagram"> - EPSON L450 - ECO TANQUE 504 (CYAN)</i><i class="instagram"> - 1 UN</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 859</i><i class="instagram"> - EPSON L450 - ECO TANQUE 504 (MAGENTA)</i><i class="instagram"> - 1 UN</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 860</i><i class="instagram"> - CABO Pp 2x1,5</i><i class="instagram"> - 1 RL</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 861</i><i class="instagram"> - MP 24/10-R2 - RETIFICADORA PROTECO</i><i class="instagram"> - 3 UN</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 862</i><i class="instagram"> - ELETRODO P/ MÁQUINA DE FUSÃO ORIENTEK T40 (PAR)</i><i class="instagram"> - 1 UN</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 864</i><i class="instagram"> - ELETRODO P/ MÁQUINA DE FUSÃO FUJIKURA 70S (PAR)</i><i class="instagram"> - 1 UN</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 865</i><i class="instagram"> - PROTETOR DE EMENDA ÓPTICA - TUBETE 55 X 3.5MM</i><i class="instagram"> - 1500 UN</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 866</i><i class="instagram"> - CILINDRO GÁS MAPP BERNZOMAT 400G</i><i class="instagram"> - 2 UN</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 867</i><i class="instagram"> - BROCA CONCRETO 6MM x 110MM SDS-PLUS</i><i class="instagram"> - 20 PC</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 868</i><i class="instagram"> - DUPLA FACE 19MM x 20M 3M VHB 4910</i><i class="instagram"> - 8 RL</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 869</i><i class="instagram"> - CABO PP 2x1,0MM</i><i class="instagram"> - 0 MT</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 870</i><i class="instagram"> - PRENSA CABO PG36</i><i class="instagram"> - 0 PC</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 871</i><i class="instagram"> - ELÁSTICO DE BORRACHA</i><i class="instagram"> - 1 KG</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 872</i><i class="instagram"> - RÉGUA 30 CM</i><i class="instagram"> - 5 UN</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 873</i><i class="instagram"> - DISJUNTOR RELIGAMENTO AUTOMÁTICO 32A-220V-60HZ</i><i class="instagram"> - 2 UN</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 874</i><i class="instagram"> - PAPEL HIGIÊNICO ROLÃO</i><i class="instagram"> - 31 RL</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 875</i><i class="instagram"> - SABONETE LIQUIDO ESPUMA</i><i class="instagram"> - 22 UN</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 876</i><i class="instagram"> - SACO DE RÁFIA 65x90</i><i class="instagram"> - 0 UN</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 877</i><i class="instagram"> - BATERIA ESTACIONÁRIA FREEDOM DF2000 - 115AH</i><i class="instagram"> - 12 PC</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 878</i><i class="instagram"> - BUCHA PAREDE S6</i><i class="instagram"> - 620 UN</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 879</i><i class="instagram"> - PARAFUSO PAREDE S6</i><i class="instagram"> - 700 UN</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 880</i><i class="instagram"> - ONU GPON WIFI AC HUAWEI HS8546V 1POTS+4GE+2USB ECHOLIFE</i><i class="instagram"> - 21 PC</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 881</i><i class="instagram"> - ESCADA EXT. ALUMÍNIO/FIBRA VAZADA 3,60 X 6,00M</i><i class="instagram"> - 4 PC</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 882</i><i class="instagram"> - ÁGUA DESMINERALIZADA</i><i class="instagram"> - 1 LT</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 883</i><i class="instagram"> - CAVALETE SUPORTE PARA BOBINA</i><i class="instagram"> - 4 PC</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 885</i><i class="instagram"> - FONTE DE ALIMENTAÇÃO 19V 3,42A - NOTEBOOK</i><i class="instagram"> - 2 PECA</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 886</i><i class="instagram"> - REFIL WFS 008 P/ FILTRO DE ÁGUA SOFT</i><i class="instagram"> - 0 UN</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 887</i><i class="instagram"> - REFIL FILTRO ELECTROLUX PE11B / PE11X</i><i class="instagram"> - 0 UN</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 888</i><i class="instagram"> - BANDANA / TOUCA PROTEÇÃO</i><i class="instagram"> - 8 PC</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 889</i><i class="instagram"> - ONU GPON HG8310M HUAWEI ECHOLIFE</i><i class="instagram"> - 0 UN</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 890</i><i class="instagram"> - CEO CAIXA DE EMENDA 144F BASE GROMMET 7 A 12</i><i class="instagram"> - 5 PC</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 891</i><i class="instagram"> - DERIVADOR CEO 144F GROMMET REDONDA (2 ENT, 7 - 13)</i><i class="instagram"> - 10 PC</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 892</i><i class="instagram"> - ALICATE CORTE DIAGONAL 6" ISOLADO 219024BBR BELZER</i><i class="instagram"> - 9 PC</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 893</i><i class="instagram"> - PORTEIRO ELETRONICO XPE 1001 ID (SCA 1000)</i><i class="instagram"> - 1 PC</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 895</i><i class="instagram"> - ADAPTADOR ANALOG. P TEL. VOIP - ATA GKM 2210T 2 CANAIS</i><i class="instagram"> - 1 PC</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 896</i><i class="instagram"> - ADESIVO - MODELO 12</i><i class="instagram"> - 200 UN</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 897</i><i class="instagram"> - ADESIVO - NUMERICO</i><i class="instagram"> - 1370 UN</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 898</i><i class="instagram"> - PÉ DE BORRACHA P/ ESCADA EXTENSÍVEL - FIBRA DE VIDRO</i><i class="instagram"> - 8 UN</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 899</i><i class="instagram"> - CINTA DE BORRACHA P/ ESCADA EXTENSÍVEL DE FIBRA DE VIDRO</i><i class="instagram"> - 4 PC</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 900</i><i class="instagram"> - FRETE</i><i class="instagram"> - 19 SR</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 901</i><i class="instagram"> - SEALTUBO 1" 60G C/ CAPA</i><i class="instagram"> - 15 MT</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 902</i><i class="instagram"> - CONECTOR MACHO FIXO ZINCADO 1" BSP</i><i class="instagram"> - 0 PC</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 903</i><i class="instagram"> - FONTE VA - NOBREAK ONLINE 13,8V8A+2A</i><i class="instagram"> - 1 PC</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 904</i><i class="instagram"> - FONTE VA - NOBREAK ONLINE 24V7A+6A</i><i class="instagram"> - 1 PC</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 905</i><i class="instagram"> - SACO ALVEJADO 0,65x0,40 DUPLO XADREZ</i><i class="instagram"> - 6 UN</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 906</i><i class="instagram"> - SACO PLASTICO TRANSPARENTE 25x35</i><i class="instagram"> - 2 KG</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 907</i><i class="instagram"> - FLYER 150x210MM COLORIDO FRENTE E VERSO - PAPEL COUCHÊ 150G</i><i class="instagram"> - 20000 UN</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 908</i><i class="instagram"> - CAPA PARA CARNÊ 90x420MM C/ CORTE ESPECIAL</i><i class="instagram"> - 6000 UN</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 909</i><i class="instagram"> - CAIXA PLÁSTICA HORTIFRUTI - PRETA</i><i class="instagram"> - 9 PC</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 910</i><i class="instagram"> - NOBREAK SMS LEGRAND SINUS TRIAD 10KVA/8KVW</i><i class="instagram"> - 0 PC</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 911</i><i class="instagram"> - MODULO DE BATERIAS EXTERNO 240VCC SMS LEGRAND 3U</i><i class="instagram"> - 0 PC</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 912</i><i class="instagram"> - LUVAS DE RASPA</i><i class="instagram"> - 21 PAR</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 913</i><i class="instagram"> - ONU GPON HS8145V HUAWEI ECHOLIFE</i><i class="instagram"> - 0 UN</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 914</i><i class="instagram"> - GARRAFA TÉRMICA DE PRESSÃO 1 LITRO</i><i class="instagram"> - 0 UN</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 917</i><i class="instagram"> - FITA ROTULADOR DYMO LETRATAG PLÁSTICA AMARELA 12MM x 4M</i><i class="instagram"> - 7 UN</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 918</i><i class="instagram"> - LUVA PU PRETA M KALIPSO</i><i class="instagram"> - 20 UN</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 919</i><i class="instagram"> - SACO PARA LIXO PRETO 100 LT C/ 100 FINO</i><i class="instagram"> - 1 PT</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 920</i><i class="instagram"> - BOM AR AEROSOL 400 ML</i><i class="instagram"> - 6 UN</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 921</i><i class="instagram"> - FO.-CABO DROP FTTH 1 FIBRA FASTWIRELESS CFOAC-BLI A/B-CM-01-AR-LSZH</i><i class="instagram"> - 0 UN</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 923</i><i class="instagram"> - RETIFICADOR 48V 1000W 20A 110/220V 2x1U - EMERSON</i><i class="instagram"> - 2 PC</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 924</i><i class="instagram"> - MANGUITO - MANGA DE PROTEÇÃO SOLAR P/ BRAÇOS</i><i class="instagram"> - 0 PAR</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 927</i><i class="instagram"> - ADESIVO - MODELO 01</i><i class="instagram"> - 0 UN</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 928</i><i class="instagram"> - CAPA DE CHUVA ALBA EUROPA PVC - TAMANHO GG</i><i class="instagram"> - 0 PC</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 929</i><i class="instagram"> - ADOÇANTE 100ML</i><i class="instagram"> - 5 UN</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 930</i><i class="instagram"> - GALÃO DE COMBUSTÍVEL 20 LITROS - MATSURI</i><i class="instagram"> - 2 PC</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 931</i><i class="instagram"> - MALETA BLACK BOX ORGANIZE (CAIXA ORGANIZADORA UNIVERSAL)</i><i class="instagram"> - 1 PC</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 932</i><i class="instagram"> - MAQUINA DE CINTAR POSTE BLINDADA LINHA MASTER - MC101 - FLENNOR</i><i class="instagram"> - 3 PC</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 933</i><i class="instagram"> - CAIXA ORGANIZADORA RETANGULAR PEQUENA C/ 9 DIVISÓRIAS</i><i class="instagram"> - 13 PC</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 934</i><i class="instagram"> - NOBREAK SMS LEGRAND SINUS TRIAD 10KVA/8KW E/S 220V</i><i class="instagram"> - 1 UN</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 935</i><i class="instagram"> - GABINETE COM 20 BATERIAS 9AH</i><i class="instagram"> - 1 UN</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 936</i><i class="instagram"> - PATCH CORD SC/UPC - LC/UPC SM 5 METROS</i><i class="instagram"> - 0 UN</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 937</i><i class="instagram"> - PATCH CORD SC/UPC - SC/UPC SM 5 METROS</i><i class="instagram"> - 48 UN</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 938</i><i class="instagram"> - REFIL FILTRO ELECTROLUX PA10N PA20G PA25G PA30G PA40G</i><i class="instagram"> - 0 UN</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 939</i><i class="instagram"> - CLIPS Nº 02 GALVANIZADO</i><i class="instagram"> - 14 CX</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 941</i><i class="instagram"> - FITA DE EMPACOTAMENTO - TRANSPARENTE</i><i class="instagram"> - 2 UN</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 942</i><i class="instagram"> - FITA DE EMPACOTAMENTO - MARROM</i><i class="instagram"> - 3 UN</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 943</i><i class="instagram"> - DISJUNTOR STECK UNIPOLAR 40A SD-61C40</i><i class="instagram"> - 8 PC</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 944</i><i class="instagram"> - PLUG FÊMEA 2P+T 20A</i><i class="instagram"> - 6 PC</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 945</i><i class="instagram"> - PATCH CORD SC/UPC SM SX 1M Pigtail</i><i class="instagram"> - 12 UN</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 946</i><i class="instagram"> - SPLITTER 1x4 SM SC/UPC</i><i class="instagram"> - 2 UN</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 947</i><i class="instagram"> - PLACA OLT HUAWEI GPHF 16 GPON C+ (MA5800)</i><i class="instagram"> - 0 PC</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 948</i><i class="instagram"> - FONTE 24V 0.8A - POWER SUPPLY (MIKROTIK)</i><i class="instagram"> - 2 PC</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 949</i><i class="instagram"> - ABRAÇADEIRA BAP 3 FG</i><i class="instagram"> - 240 PC</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 950</i><i class="instagram"> - OPTILOOP CINZA</i><i class="instagram"> - 0 PC</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 951</i><i class="instagram"> - KIT INSTALAÇÃO OPTILOOP</i><i class="instagram"> - 0 PC</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 952</i><i class="instagram"> - SUPA UNIANC 01 DIELETRICO</i><i class="instagram"> - 290 PC</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 953</i><i class="instagram"> - CAS - 4,8 MM (3X2,25MM)</i><i class="instagram"> - 2000 MT</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 954</i><i class="instagram"> - RÉGUA CALHA PDU 16 TOMADAS PADRÃO NBR 14136 2P+T 20A</i><i class="instagram"> - 4 PC</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 955</i><i class="instagram"> - CABO OPTICO CFOA-SM-AS80 MINI-RA 06F NR</i><i class="instagram"> - 30000 MT</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 956</i><i class="instagram"> - DISPENSER SABONETE ESPUMA C/ RESERVATORIO</i><i class="instagram"> - 3 UN</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 957</i><i class="instagram"> - CHAVE DE RODA TIPO CRUZ 8-10-12-14mm</i><i class="instagram"> - 1 UN</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 958</i><i class="instagram"> - CHAVE COMBINADA 10 MM</i><i class="instagram"> - 7 UN</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 959</i><i class="instagram"> - CHAVE COMBINADA 11 MM</i><i class="instagram"> - 5 UN</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 960</i><i class="instagram"> - CHAVE COMBINADA 12 MM</i><i class="instagram"> - 5 UN</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 961</i><i class="instagram"> - CHAVE COMBINADA 14 MM</i><i class="instagram"> - 1 UN</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 962</i><i class="instagram"> - CHAVE COMBINADA 15 MM</i><i class="instagram"> - 1 UN</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 963</i><i class="instagram"> - FONTE UBNT POE 24V 0.3A GIGABIT - BRANCA</i><i class="instagram"> - 0 PC</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 964</i><i class="instagram"> - ESTOPA 200 GRS</i><i class="instagram"> - 8 UN</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 965</i><i class="instagram"> - SAPOLIO</i><i class="instagram"> - 1 UN</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 966</i><i class="instagram"> - ALICATE DECAPADOR - FIS PRECISION OPTIC STRIPPERS</i><i class="instagram"> - 5 PC</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 967</i><i class="instagram"> - MIKROTIK CCR1036-8G-2S+ L6</i><i class="instagram"> - 2 PC</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 968</i><i class="instagram"> - CLIVADOR FC-6S</i><i class="instagram"> - 3 UN</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 969</i><i class="instagram"> - CAMISA SOCIAL MASCULINA MANGA LONGA TAM P COR BRANCA</i><i class="instagram"> - 4 UN</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 970</i><i class="instagram"> - CAMISA SOCIAL MASCULINA MANGA LONGA TAM M COR BRANCA</i><i class="instagram"> - 4 UN</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 971</i><i class="instagram"> - CAMISA SOCIAL MASCULINA MANGA LONGA TAM GG COR BRANCA</i><i class="instagram"> - 2 UN</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 972</i><i class="instagram"> - CAMISA SOCIAL MASCULINA MANGA LONGA TAM EXG COR BRANCA</i><i class="instagram"> - 2 UN</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 973</i><i class="instagram"> - CAMISA SOCIAL MASCULINA MANGA CURTA TAM P COR BRANCA</i><i class="instagram"> - 0 UN</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 974</i><i class="instagram"> - CAMISA SOCIAL MASCULINA MANGA CURTA TAM G COR BRANCA</i><i class="instagram"> - 0 UN</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 975</i><i class="instagram"> - CAMISA SOCIAL MASCULINA MANGA CURTA TAM GG COR BRANCA</i><i class="instagram"> - 0 UN</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 976</i><i class="instagram"> - CAMISA SOCIAL MASCULINA MANGA CURTA TAM EXG COR BRANCA</i><i class="instagram"> - 1 UN</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 977</i><i class="instagram"> - CAMISA SOCIAL FEMININA MANGA LONGA TAM G COR BRANCA</i><i class="instagram"> - 0 UN</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 978</i><i class="instagram"> - CAMISA SOCIAL FEMININA MANGA LONGA TAM GG COR BRANCA</i><i class="instagram"> - 0 UN</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 979</i><i class="instagram"> - FONTE 12V 0.5A</i><i class="instagram"> - 55 UN</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 980</i><i class="instagram"> - SPLITTER BALANCEADO 1X2 50/50% SEM CONECTOR</i><i class="instagram"> - 0 UN</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 981</i><i class="instagram"> - BLOCO ADESIVO POST-IT 3M 38X50mm AMARELO</i><i class="instagram"> - 19 UN</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 982</i><i class="instagram"> - PATCH CORD SM SC/APC - LC/UPC</i><i class="instagram"> - 5 UN</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 983</i><i class="instagram"> - CABO DE COM 2 X 1,5MM C</i><i class="instagram"> - 100 MT</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 984</i><i class="instagram"> - ESTILETE 18MM O215 BLACK JACK</i><i class="instagram"> - 5 UN</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 985</i><i class="instagram"> - LAMINA 18MM</i><i class="instagram"> - 2 UN</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 986</i><i class="instagram"> - CLEANER PEN 2.5MM FC/ST/SC (CANETA P/ LIMPEZA)</i><i class="instagram"> - 3 UN</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 987</i><i class="instagram"> - PATCH CORD LC-UPC LC-UPC SINGLE MODE DUPLEX 5 METROS</i><i class="instagram"> - 6 UN</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 990</i><i class="instagram"> - BOTINA C/ BICO DE PVC TAM 38</i><i class="instagram"> - 0 UN</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 991</i><i class="instagram"> - BOTINA C/ BICO DE PVC TAM 39</i><i class="instagram"> - 1 UN</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 992</i><i class="instagram"> - BOTINA C/ BICO DE PVC TAM 40</i><i class="instagram"> - 2 UN</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 993</i><i class="instagram"> - BOTINA C/ BICO DE PVC TAM 41</i><i class="instagram"> - 1 UN</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 994</i><i class="instagram"> - BOTINA C/ BICO DE PVC TAM 42</i><i class="instagram"> - 1 UN</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 995</i><i class="instagram"> - CAMISA MANGA LONGA SOCIAL MASCULINA IBISA TAM G COR NOITE</i><i class="instagram"> - 2 UN</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 996</i><i class="instagram"> - CAMISA MANGA LONGA SOCIAL MASCULINA IBISA TAM GG COR NOITE</i><i class="instagram"> - 2 UN</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 997</i><i class="instagram"> - CONE SINALIZADOR 50CM LARANJA E BRANCO</i><i class="instagram"> - 0 UN</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 998</i><i class="instagram"> - SERRA COPO BI-METALICA DE 23/8 POLEGADAS 60MM</i><i class="instagram"> - 1 PC</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 999</i><i class="instagram"> - ESCADA DE ALUMINIO 3 DEGRAUS - MOR-005101</i><i class="instagram"> - 0 PC</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 1001</i><i class="instagram"> - SPLITTER DESBALANCEADO 1X2 01/99% SEM CONECTOR</i><i class="instagram"> - 2 UN</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 1004</i><i class="instagram"> - FONTE NOBREAK PROTECO MP48/5-R2</i><i class="instagram"> - 1 PC</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 1005</i><i class="instagram"> - FONTE NOBREAK V/A 24V7A 27,6A2A</i><i class="instagram"> - 0 UN</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 1006</i><i class="instagram"> - FONTE NOBREAK V/A 55,2V2 2,5A</i><i class="instagram"> - 1 UN</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 1007</i><i class="instagram"> - BOTINA C/ BICO DE PVC TAM 43</i><i class="instagram"> - 1 PAR</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 1008</i><i class="instagram"> - CABO OPTICO CFOA-SM-AS80 MINI-RA 12F NR</i><i class="instagram"> - 0 MT</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 1009</i><i class="instagram"> - CABO OPTICO CFOA-SM-AS80 MINI-RA 06F NR - INATIVO</i><i class="instagram"> - 0 MT</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 1010</i><i class="instagram"> - FONTE 12V 1.5A</i><i class="instagram"> - 15 UN</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 1011</i><i class="instagram"> - MULTÍMETRO - MINIPA ET-1002</i><i class="instagram"> - 0 PC</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 1012</i><i class="instagram"> - OLT HUAWEI 11U 19" MA5800-X15 10G 16GPON GPHF 2PILA 2MPLA</i><i class="instagram"> - 0 PC</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 1025</i><i class="instagram"> - SACO P LIXO 110 LTS C 100 BL REFORCADO</i><i class="instagram"> - 1 UN</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 1026</i><i class="instagram"> - PATCH CORD U/UTP GIGALAN CAT.6 - CM - T568A/B - 5.0M - AZUL</i><i class="instagram"> - 0 UN</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 1027</i><i class="instagram"> - FONTE 12V 1A</i><i class="instagram"> - 0 UN</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 1028</i><i class="instagram"> - HEADSET HTU-310 UBS VOIP MONO</i><i class="instagram"> - 0 PC</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 1029</i><i class="instagram"> - ESCADA EXTENSIVEL 2X6 12 DEGRAUS</i><i class="instagram"> - 0 PC</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 1030</i><i class="instagram"> - GAVETA PARA ACOMODAÇÃO DE CORDOES 19" 1U - PR</i><i class="instagram"> - 1 CJ</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 1031</i><i class="instagram"> - RACK MINI SHELTER 24U</i><i class="instagram"> - 0 UN</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 1032</i><i class="instagram"> - EPSON MULTIFUNCIONAL L4150 ECOTANK</i><i class="instagram"> - 0 PC</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 1033</i><i class="instagram"> - ALÇA PRÉ-FORMADA 6,8mm A 7,4mm</i><i class="instagram"> - 150 UN</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 1034</i><i class="instagram"> - FRIGOBAR BRASTEMP RETRO 68L BRA08BY AMARELO 220V</i><i class="instagram"> - 1 UN</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 1035</i><i class="instagram"> - FURUKAWA-PATCH CORD U/UTP GIGALAN CAT.6 -CM -T568A/B -5.0M -AZUL</i><i class="instagram"> - 15 UN</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 1036</i><i class="instagram"> - GPS MULTILASER 4.3 POLEGADAS</i><i class="instagram"> - 0 UN</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 1037</i><i class="instagram"> - ONU EPON V2801E 1GE 1*10/100/1000M</i><i class="instagram"> - 1 UN</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 1038</i><i class="instagram"> - CHAVEIRO COM IDENTIFICADOR</i><i class="instagram"> - 0 UN</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 1039</i><i class="instagram"> - ADESIVO - MODELO 08</i><i class="instagram"> - 0 UN</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 1040</i><i class="instagram"> - ESCADA EXT. ALUMINIO/FIBRA VAZADA 4,20 X 7,20M</i><i class="instagram"> - 0 UN</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 1041</i><i class="instagram"> - CATRACA DE ALUMINIO (PAR)</i><i class="instagram"> - 2 PR</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 1042</i><i class="instagram"> - OLT PLACA GCOB GPON FIBERHOME 5516-010-OLT 16 PON C+</i><i class="instagram"> - 0 PC</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 1043</i><i class="instagram"> - OLT PLACA GCOB GPON FIBERHOME 5516-010-OLT 16 PON C++</i><i class="instagram"> - 0 PC</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 1044</i><i class="instagram"> - MIKROTIK-ROUTERBOARD RB 1100X4 (1100AHX4)L6</i><i class="instagram"> - 0 UN</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 1045</i><i class="instagram"> - PNEU 175/70/R13 82T</i><i class="instagram"> - 0 UN</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 1047</i><i class="instagram"> - BATERIA - CRAL CL45VD/E</i><i class="instagram"> - 0 PC</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 1048</i><i class="instagram"> - BATERIA - SBO60D/E</i><i class="instagram"> - 0 PCA</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 1049</i><i class="instagram"> - CABO OPTICO CFOI-BLI-UB 24F LSZH (SIMPLUSLAN 24F BLI-A/B LSZH FTTA AZ)</i><i class="instagram"> - 0 MT</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 1050</i><i class="instagram"> - TANQUE DE COMBUSTIVEL 50 LITROS</i><i class="instagram"> - 0 UN</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 1051</i><i class="instagram"> - CAIXA DE TERMINAÇÃO ÓPTICA - CTO 24 FO INTERNA - TIPO W</i><i class="instagram"> - 0 PC</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 1052</i><i class="instagram"> - GELADEIRA</i><i class="instagram"> - 0 UN</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> 1053</i><i class="instagram"> - CONECTOR SC/APC D-01 SIPIBSFIBER</i><i class="instagram"> - 0 UN</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> PRD1010</i><i class="instagram"> - Antena</i><i class="instagram"> - 0 UN</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><table border='1'><tr><td><a><i class="instagram"> PRD1011</i><i class="instagram"> - Fonte</i><i class="instagram"> - 0 UN</i></a></td></tr></table></li>
+
+<li class="post" style="backgroud-color: #fff;" ><a><i>1057</i><i class="instagram"> - MODULO MICROTIK S+85DLC03D 10G DDM SFP+300M 850NM</i><i class="instagram"> - 1 UN</i></a></td></tr></table></li>
+
+
+</ul></center></div>
+<!--Kite Menu Js-->
+<script>
+(function ($) {
+	$.fn.kiteMenu = function (options) {
+
+		var setting = $.extend({
+			kiteSkin: "default", //put the name of theme in this string
+			boxShadow: false, //shadow at the bottom of menubar, ture to enable
+			textShadow: false, //shadow for text, true for enable
+
+		}, options);
+
+		return this.each(function () {
+
+			var target = $(this);
+
+			//applying the menu customization 
+			if (setting.boxShadow == true) {
+
+				$(target).addClass("box-shadow");
+
+			}
+			if (setting.textShadow == true) {
+
+				$(target).addClass("text-shadow");
+
+			}
+			$(target).addClass(setting.kiteSkin);
+
+
+			var kiteSearch = $(".kite-search");
+
+			var search_open = false; //to determine whether the search box open or not
+			var menu_open = false; // to determine whether the menu links open or not
+
+			//Getting the kite triggers 
+			var trigger = {
+				'menu': '.kite-menu-trigger', //hamburger 
+				'search': '.kite-search-trigger', //search trigger
+			};
+
+
+			$(trigger.menu).on('click', function () {
+
+				$(this).toggleClass("active"); //this means hamburger menu, when user clicks on it the menu will open and it's become close button 
+
+				if (search_open == true) { //if search box already shown 
+
+					$(target).toggleClass("expand-2x");
+
+					//then menu will be expanded by 2x
+				} else {
+					//otherwise menu will be expand by 1x
+					$(target).toggleClass("expand-1x");
+
+
+				}
+
+				//now check, if hamburger opened 
+				if ($(this).hasClass("active")) {
+					//then the navigation links will fade in
+					$(".links-wrapper").fadeIn("slow");
+
+					menu_open = true; //indicate that menu opened 
+
+				}
+
+				//otherwise  (if hamburger clicked again) the navigation fade away 
+				else {
+
+					$(".links-wrapper").fadeOut("fast");
+
+					menu_open = false; //indicate that menu closed
+
+				}
+
+
+			});
+
+
+			$(trigger.search).click(function (x) {
+
+				x = $(this); //indicates Search trigger icon
+
+				x.toggleClass("active"); //toggle the active class for search icon 
+
+				if (x.hasClass("active")) { //to check if user clicked on the search trigger 
+
+					search_open = true; //indicates that search box opened 
+
+					//now searchbox will be slide down with the 400ms speed. 
+					$(kiteSearch).slideDown(400, function () {
+						//after sliding search box, the input will immediately focus
+						$(kiteSearch).find("input").focus();
+
+					});
+
+					//if search trigger clicked again 
+				} else {
+
+					search_open = false; //indicates that search box closed 
+
+					$(kiteSearch).slideUp(); //slide up the search box
+				}
+
+				//check if menu links are opened then search box will be expanded by 2x
+
+				if (menu_open == true) {
+
+					$(target).toggleClass("expand-2x");
+
+
+				}
+				//on the other hand, it will expand by 1x
+				else {
+					$(target).toggleClass("expand-1x");
+
+
+				}
+
+			});
+
+
+		});
+	};
+
+})(jQuery);
+</script>
+<script>
+function myFunction() {
+var input, filter, ul, li, a, i;
+input = document.getElementById("myInput");
+filter = input.value.toUpperCase();
+ul = document.getElementById("myUL");
+li = ul.getElementsByTagName("li");
+for (i = 0; i < li.length; i++) {
+a = li[i].getElementsByTagName("a")[0];
+if (a.innerHTML.toUpperCase().indexOf(filter) > -1) {
+li[i].style.display = "";
+} else {
+li[i].style.display = "none"; }
+}
+}
+</script>
+<script>
+$(document).ready(function(){
+$(".kite-menu").kiteMenu();
+}); //jQuery
+</script>
+<script>
+jQuery("document").ready(function($){
+
+    var nav = $('.nav-container');
+
+    $(window).scroll(function () {
+        if ($(this).scrollTop() > 136) {
+            nav.addClass("f-nav");
+        } else {
+            nav.removeClass("f-nav");
+        }
+    });
+
+});
+</script>
+
+
+
+</body>
+</html>
