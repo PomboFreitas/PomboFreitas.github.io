@@ -1,446 +1,1030 @@
+<!DOCTYPE html>
 <html class='alexandre'>
 <head>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <meta charset="UTF-8" />
-<title>TERCEIROS</title>
-<meta name="description" content="UTILIZAÇÃO" />
-		<link href="https://fonts.googleapis.com/css?family=Great+Vibes" rel="stylesheet">
-		<script src="https://www.crmtransporteexecutivo.com.br/js/modernizr.custom.js"></script>
-	<div class="fixar">
-<div>
-<ul class="na">
-<li class="nav"><a class="nave" href='#10'>10/04/2019</a></li>
-<li class="nav"><a class="nave" href='#11'>11/04/2019</a></li>
-<li class="nav"><a class="nave" href='#12'>12/04/2019</a></li>
-<li class="nav"><a class="nave" href='#13'>13/04/2019</a></li>
-<li class="nav"><a class="nave" href='#14'>14/04/2019</a></li>
-<li class="nav"><a class="nave" href='#15'>15/04/2019</a></li>
-<li class="nav"><a class="nave" href='#16'>16/04/2019</a></li>
-<li class="nav"><a class="nave" href='#17'>17/04/2019</a></li>
-</ul>
-</div>
-</div>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
+<title>👻</title>
+<meta name="description" content="Pesquisa de Materiais" />
+
+<!--jQuery-->
+<script
+  src="https://code.jquery.com/jquery-3.3.1.min.js"
+  integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+  crossorigin="anonymous"></script>
+  
+  <!--Font Awesome-->
+  <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" />
+
+<!--Google Fonts-->
+<link href="https://fonts.googleapis.com/css?family=Quicksand" rel="stylesheet">
+
+<!--Kite Menu CSS-->
+
 <style>
-div {
-color: #fff;
-    background: #5e03ff;
-    background: -webkit-linear-gradient(to right, #512DA8, #673AB7);
-    background: linear-gradient(to right, #000000, #10002b);
+
+
+* {
+    margin: 1px;
+    padding: 1px;
+    box-sizing: border-box;
+    border-radius: 15px;
 }
-html {
-    background: #5e03ff;
-    background: -webkit-linear-gradient(to right, #512DA8, #673AB7);
-    background: linear-gradient(to right, #000000, #10002b);
+option{
+    margin: 1px;
+    padding: 1px;
+    box-sizing: border-box;
+    border-radius: 15px;
+	color: rgba(255, 255, 255, 0.7);
+}
+
+.kite-menu {
+	font-family: 'Quicksand', sans-serif;
+	width: 100%;
+	height: 55px;
+	line-height: 55px;
+	color: rgba(255, 255, 255, 0.7);
+	position: relative;
+	overflow: hidden;
+}
+
+.kite-menu,
+.kite-menu.expand {
+	transition: all ease-in-out .4s;
+	-webkit-transition: all ease-in-out .4s;
+	-moz-transition: all ease-in-out .4s;
+}
+
+.kite-menu.expand-1x {
+	height: 110px;
+}
+
+.kite-menu.expand-2x {
+	height: 200px;
+}
+
+
+/* Text Shaodw */
+
+.kite-menu.text-shadow {
+	text-shadow: 1px 0.5px rgba(0, 0, 0, 0.4);
+	-webkit-text-shadow: 1px 0.5px rgba(0, 0, 0, 0.4);
+}
+
+
+/* Box Shadow*/
+
+.kite-menu.box-shadow {
+	box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.5);
+	-webkit-box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.5);
+}
+
+
+/* Menu Logo */
+
+.kite-menu .kite-logo {
+	display: inline-block;
+	position: absolute;
+	left: 10px;
+}
+
+
+/* A wrapper for hamburger icon*/
+
+.kite-menu-trigger {
+	position: absolute;
+	right: 10px;
+	top: 15px;
+	-webkit-appearance: none;
+}
+
+
+#hamburger {
+	-webkit-tap-highlight-color: transparent;
+	cursor: pointer;
+	padding: 10px 35px 16px 0px;
+}
+
+#hamburger span,
+#hamburger span:before,
+#hamburger span:after {
+	cursor: pointer;
+	border-radius: 4px;
+	height: 2px;
+	width: 30px;
+	background: rgb(255, 255, 255);
+	position: absolute;
+	display: inline-block;
+	content: '';
+}
+
+#hamburger span:before {
+	top: -10px;
+}
+
+#hamburger span:after {
+	bottom: -10px;
+}
+
+
+/*
+#hamburger span, #hamburger span:before, #hamburger span:after {
+  transition: all 200ms ease-in-out;
+}
+*/
+
+#hamburger span,
+#hamburger span:before,
+#hamburger span:after {
+	-webkit-transition: all 300ms cubic-bezier(0.645, 0.045, 0.355, 1.000);
+	-moz-transition: all 300ms cubic-bezier(0.645, 0.045, 0.355, 1.000);
+	-o-transition: all 300ms cubic-bezier(0.645, 0.045, 0.355, 1.000);
+	transition: all 300ms cubic-bezier(0.645, 0.045, 0.355, 1.000);
+	/* easeInOutCubic */
+}
+
+#hamburger.active span {
+	background-color: transparent;
+}
+
+#hamburger.active span:before,
+#hamburger.active span:after {
+	top: 0;
+}
+
+#hamburger.active span:before {
+	transform: rotate(45deg);
+}
+
+#hamburger.active span:after {
+	transform: translateY(-10px) rotate(-45deg);
+	top: 10px;
+}
+
+
+/* Menu Links */
+.linkvideo {
+text-decoration: none;
+color: #fff;
+-webkit-tap-highlight-color: transparent;
+color: rgba(255, 255, 255, 0.80);
+padding: 5px;
+color: #fffaf0;
+font-family: sans-serif;
+border-radius: 5px;
+}
+.links-wrapper {
+	position: absolute;
+	margin-top: 50px;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	display: none;
+}
+.nav-container{ background: url('images/nav_bg.jpg') repeat-x 0 0;}
+    .f-nav{ z-index: 9999; position: fixed; left: 0; top: 0; width: 100%;} /* this make our menu fixed top */
+
+.nav {
+    .nav ul { list-style: none; }
+    .nav ul li{float: left; margin-top: 6px; padding: 6px; border-right: 1px solid #ACACAC;}
+    .nav ul li:first-child{ padding-left: 0;}
+    .nav ul li a { }
+    .nav ul li a:hover{ text-decoration: underline;}
+}
+
+.menu-links {
+	list-style: none;
+	width: 100%;
+	text-align: center;
+}
+
+.menu-links li {
+	display: inline;
+	margin: 5px;
+}
+
+.menu-links li a {
+	text-decoration: none;
+	color: #fff;
+	/* for zombies browser*/
+	-webkit-tap-highlight-color: transparent;
+	color: rgba(255, 255, 255, 0.80);
+	padding: 5px;
+}
+
+.menu-links li a:hover {
+	border-bottom: 1px solid;
+	border-top: 1px solid;
+	border-color: rgba(255, 255, 255, 0.4);
+	color: #fff;
+	transition: .5s;
+}
+
+
+/* Kite Search */
+
+.kite-search-trigger {
+	-webkit-tap-highlight-color: transparent;
+	width: 35px;
+	height: 35px;
+	line-height: 32px;
+	text-align: center;
+	border-radius: 50%;
+	position: absolute;
+	cursor: pointer;
+	right: 60px;
+	top: 10px;
+	font-size: 22px;
+	color: #fff;
+}
+
+.kite-search-trigger:hover {
+	background: rgba(0, 0, 0, 0.2);
+}
+
+.kite-search {
+	display: block;
+	position: absolute;
+	top: 50px;
+	text-align: center;
+	width: 100%;
+	display: none;
+}
+
+.kite-search form {
+	margin: 0;
+}
+
+.kite-search input[type="text"] {
+	background: rgba(255, 255, 255, 0.99);
+	padding: 10px;
+	border: 0;
+	outline: 0;
+	border-radius: 20px 0 0 20px;
+	width: 120px;
+	transition: all 200ms ease-in-out;
+}
+
+.kite-search input[type="text"]:focus {
+	width: 220px;
+	transition: all 200ms ease-in-out;
+}
+
+.kite-search .search-btn {
+	padding: 10px;
+	border: 0;
+	outline: 0;
+	cursor: pointer;
+	-webkit-tap-highlight-color: transparent;
+	background: #ddd;
+	color: #aaa;
+	border-radius: 0 50% 50% 0;
+	margin-left: -5px;
+}
+
+.kite-search .search-btn:hover {
+	background: #eee;
+}
+
+
+/* Kite Menu on Large Screens */
+
+@media only screen and (min-width: 480px) {
+	.kite-search-trigger {
+		display: none;
+	}
+	.kite-search {
+		position: absolute;
+		display: block;
+		top: 0;
+		right: 60px;
+		text-align: right;
+	}
+    .desc{
+    font-size: 15px;
+    position: relative;
+    text-align: justify;
+    margin: 12px;
+    font-family: sans-serif;
+    }
+    .linkvideo{
+        font-size: 18px;
+    }		
+	.capa{
+	   float: left;
+       padding: 2px;
+       width: 100px;
+
+	 }
+	.post{
+    position: relative;
+    padding: 5px;
+    text-align: start;
+    left: auto;
+    font-size: 20px;
+
+	 }		 	
+}
+@media only screen and (max-width: 959px) {   	
+	.desc{
+    font-size: 20px;
+    position: relative;
+    text-align: justify;
+    margin: 20px;
+    font-family: sans-serif;	
+    }
+	.capa{
+	   float: left;
+       padding: 5px;
+
+	 }  
+}
+@media only screen and (min-width: 768px) and (max-width: 1959px) {
+    .desc{
+    font-size: 20px;
+    position: relative;
+    text-align: justify;
+    margin: 20px;
+    font-family: sans-serif;
+    }
+	.capa{
+	   float: left;
+       padding: 5px;
+
+	 }
+	.post{
+    position: relative;
+    padding: 5px;
+    text-align: start;
+    left: auto;
+    font-size: 20px;
+
+	 }	 
+}
+@media only screen and (max-width: 767px) {
+    .desc{
+    font-size: 18px;
+    position: relative;
+    text-align: justify;
+    margin: 18px;
+    font-family: sans-serif;
+    }
+	.capa{
+	   float: left;
+       padding: 5px;
+       height: 250px;
+	 }
+	.post{
+    position: relative;
+    padding: 5px;
+    text-align: start;
+    left: auto;
+    font-size: 20px;
+
+	 }		 
+}
+@media only screen and (min-width: 480px) and (max-width: 767px) {
+    .desc{
+    font-size: 15px;
+    position: relative;
+    text-align: justify;
+    margin: 15px;
+    font-family: sans-serif;
+    }
+	.capa{
+	   float: left;
+       padding: 5px;
+
+	 }  	
+    .linkvideo{
+        font-size: 20px;
+    }	
+	.capa{
+		 height: 150px;
+		 padding: 7px
+    }
+	.post{
+    position: relative;
+    padding: 5px;
+    text-align: start;
+    left: auto;
+    font-size: 20px;
+
+	 }		
+}
+@media only screen and (max-width: 479px) {
+	.datalist datalist {
+		position: absolute;
+		display: block;
+	}	
+    .desc{
+    font-size: 12px;
+    position: relative;
+    text-align: justify;
+    margin: 10px;
+    font-family: sans-serif;
+    }
+    .linkvideo{
+        font-size: 15px;
+    }		
+	.capa{
+	   float: left;
+       padding: 2px;
+
+	 }
+	.post{
+    position: relative;
+    padding: 3px;
+    text-align: start;
+    left: auto;
+    font-size: 15px;
+
+	 }		 
+}
+
+
+/* Kite Menu Themes */
+
+.default {
+	background: #FF512F;
+	/* fallback for old browsers */
+	background: -webkit-linear-gradient(to bottom, #DD2476, #FF512F);
+	/* Chrome 10-25, Safari 5.1-6 */
+	background: linear-gradient(to bottom, #DD2476, #FF512F);
+	/* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+}
+
+.lush {
+	background: #56ab2f;
+	/* fallback for old browsers */
+	background: -webkit-linear-gradient(to right, #a8e063, #56ab2f);
+	/* Chrome 10-25, Safari 5.1-6 */
+	background: linear-gradient(to right, #a8e063, #56ab2f);
+	/* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+}
+
+.deep-purple {
+	background: #673AB7;
+	/* fallback for old browsers */
+	background: -webkit-linear-gradient(to right, #512DA8, #673AB7);
+	/* Chrome 10-25, Safari 5.1-6 */
+	background: linear-gradient(to right, #512DA8, #673AB7);
+	/* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+}
+
+.rainbow {
+	background: #00F260;
+	/* fallback for old browsers */
+	background: -webkit-linear-gradient(to right, #0575E6, #00F260);
+	/* Chrome 10-25, Safari 5.1-6 */
+	background: linear-gradient(to right, #0575E6, #00F260);
+	/* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+}
+
+.instagram {
+    background: rgba(131, 58, 180, 0.25);
+    background: -webkit-linear-gradient(to right, #fcb045, #fd1d1d, #833ab4);
+    background: linear-gradient(to right, rgba(142, 112, 255, 0.41), rgba(213, 181, 255, 0.32), rgba(104, 11, 167, 0.32));
+    color: #00ed64;
+    font-size: 15px;
+    position: relative;
+    background-attachment: unset;
+}
+
+.dimigo {
+	background: #fff;
+	/* fallback for old browsers */
+	background: -webkit-linear-gradient(to right, #fc6767, #fff);
+	/* Chrome 10-25, Safari 5.1-6 */
+	background: linear-gradient(to right, #fc6767, #fff);
+	/* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+	color: #fff;
+}
+
+.deep-space {
+	background: #000000;
+	/* fallback for old browsers */
+	background: -webkit-linear-gradient(to right, #434343, #000000);
+	/* Chrome 10-25, Safari 5.1-6 */
+	background: linear-gradient(to right, #434343, #000000);
+	/* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+		color: #fff;
 }
 .alexandre {
     background: #5e03ff;
     background: -webkit-linear-gradient(to right, #512DA8, #673AB7);
     background: linear-gradient(to right, #000000, #10002b);
 }
-.na {
-  list-style-type: none;
-  margin: 0;
-  padding: 0;
-  overflow: hidden;
-  background-color: #333;
+#pop{display:none;position:fixed;float: left;left:0;top:0;padding:10px;width:70%;height:70%;z-index:99999;backgroud-color:#000}
+</style>	
+</head>
+<body>
+<!--Start Kite Menu-->
+<div class="nav-container">
+<div class="nav">
+<nav class="kite-menu rainbow fixed">
+   <h2 class="kite-logo">ESTOQUE 👻</h2>
+   <div class="kite-menu-trigger" id="hamburger"><span></span></div>
+   <div class="kite-search-trigger">
+      <i class="fa fa-search"></i>
+   </div>
+   <div class="kite-search search-input">
+      <form action="#">
+         <input id="myInput" onkeyup="myFunction()" type="text" list="historico" placeholder="Busque...">
+         <button type="submit" class="search-btn"> <i class="fa fa-search"></i> </button>
+		 <datalist class="nav" id="historico">
+<option value="ROTEADOR"></option>
+<option value="ANTENA"></option>
+<option value="ONU"></option>
+<option value="FONTE"></option>
+<option value="CONECTOR"></option>
+
+
+ 
+</datalist>
+      </form>
+   </div>
+   </div>
+</nav>
+<div class="clear"></div>
+</div>
+</div>
+<br/>
+<!--End Kite Menu-->
+
+<ul id="myUL">
+<style>
+#demo {
+  background-color: #000;
+  padding: 1.4em 1.5em 0;
 }
-.nav {
-float: left;
+.flowplayer {
+  background-color: #324584;
+  height: 100%
 }
-.nave {
-display: block;
-  color: white;
-  text-align: center;
-  padding: 14px 16px;
-  text-decoration: none;
+.item {
+  box-sizing: border-box;
+  display: inline-block;
+  vertical-align: top;
+  width: 100%;
 }
 
-a:hover {
-background:#333; 
-color:#fff; 
--moz-box-shadow:0 3px 10px 0 #CCC; 
--webkit-box-shadow:0 3px 10px 0 #ccc; 
-text-shadow:0px 0px 5px #fff;
+/* mobile layout */
+@media (max-width: 900px) {
+  .item { width: 100% }
 }
-	.fixar {
-    position:fixed;
-    margin-top: 0px !important;
-	z-index:10000;
-	width: 100%;
-	left: 0; 
-	top: 0;
-}
-#10 {
-	font-family: 'Great Vibes', cursive;
-	font: 'Great Vibes', cursive;
-		}
 </style>
 
-<body>
 
-<br>
-<br>
-<br>
-<br>
-<div class="alexandre">
-<div id="10"><fieldset><legend>10/04/2019 - Total de Clientes: 10</legend>
-<ul>
-<a style="color:red;" href="#total10"><h1 style="color:red;">Total de Itens</h1></a>
-<a><fieldset><legend><h1>10/04/2019 16:46 - Rua diácono Manoel Albino Pereira Número 27</h1></legend></legend>
-<li>ESTICADOR / 6</li>
-<li>CONECTOR / 2</li>
-<li>Metragem da fibra / 117 metros </li>
-<li>Sinal / 20.25</li>
-<li>ROLDANA/ 5</li>
-</fieldset></a><br>
 
-<a><fieldset><legend><h1>10/04/2019 16:46 - Cliente Vinícius Cardoso de Souza - Rua doutor Luciano Almeida pazinatto Número 218 casa 1</h1></legend>
-<li>ESTICADOR / 6</li>
-<li>CONECTOR / </li>
-<li>Metragem da fibra  / 74</li>
-<li>Sinal -20,00</li>
-</fieldset></a><br>
 
-<a><fieldset><legend><h1>10/04/2019 16:46 - Alemão: Fabricia da Silva Araújo - Rua Evangelista Lauro Bernardino da Silveira 101</h1></legend>
-<li>Cabo 51mts</li>
-<li>ESTICADOR 2</li>
-<li>Sinal -19.00</li>
-</fieldset></a><br>
+<li class="post deep-space" style="backgroud-color: #fff;" ><a><i class="deep-space">10/04/2019 16:46 - Rua diácono Manoel Albino Pereira Número 27</i></legend>
+<p class="instagram">ESTICADOR / 6</p>
+<p class="instagram">CONECTOR / 2</p>
+<p class="instagram">Metragem da fibra / 117 metros </p>
+<p class="instagram">Sinal / 20.25</p>
+<p class="instagram">ROLDANA/ 5</p>
+</li>
 
-<a><fieldset><legend><h1>10/04/2019 16:46 - Cliente_ Renata Aparecida Campos Silva - Rua/ Alice Guimarães Pellegrini número 88</h1></legend>
-<li>Metragem do cabo / 58</li>
-<li>ESTICADOR / 2</li>
-<li>Sinal / </li>
-<li>1 ROLDANA</li>
-<li>CONECTOR  2</li>
-</fieldset></a><br>
+<li class="post deep-space" style="backgroud-color: #fff;" ><a><i class="deep-space">10/04/2019 16:46 - Cliente Vinícius Cardoso de Souza - Rua doutor Luciano Almeida pazinatto Número 218 casa 1</i>
+<p class="instagram">ESTICADOR / 6</p>
+<p class="instagram">CONECTOR / </p>
+<p class="instagram">Metragem da fibra  / 74</p>
+<p class="instagram">Sinal -20,00</p>
+</li>
 
-<a><fieldset><legend><h1>10/04/2019 16:46 - CLIENTE: kaique Pinheiro Coelho - RUA: Dario bochino 3108</h1></legend>
-<li>MATERIAL: 8 ESTICADOR 128 de fibra</li>
-<li>SINAL: 18.30</li>
-</fieldset></a><br>
+<li class="post deep-space" style="backgroud-color: #fff;" ><a><i class="deep-space">10/04/2019 16:46 - Alemão: Fabricia da Silva Araújo - Rua Evangelista Lauro Bernardino da Silveira 101</i>
+<p class="instagram">Cabo 51mts</p>
+<p class="instagram">ESTICADOR 2</p>
+<p class="instagram">Sinal -19.00</p>
+</li>
 
-<a><fieldset><legend><h1>10/04/2019 16:46 - Cliente:  Zilda Algusto de Castro Ribeiro - Rua Alice Guimarães Pellegrini 710</h1></legend>
-<li>Metragem do cabo _ 28 m</li>
-<li>ESTICADOR / 4</li>
-<li>CONECTOR /2</li>
-</fieldset></a><br>
+<li class="post deep-space" style="backgroud-color: #fff;" ><a><i class="deep-space">10/04/2019 16:46 - Cliente_ Renata Aparecida Campos Silva - Rua/ Alice Guimarães Pellegrini número 88</i>
+<p class="instagram">Metragem do cabo / 58</p>
+<p class="instagram">ESTICADOR / 2</p>
+<p class="instagram">Sinal / </p>
+<p class="instagram">1 ROLDANA</p>
+<p class="instagram">CONECTOR  2</p>
+</li>
 
-<a><fieldset><legend><h1>10/04/2019 16:46 - Cliente / Liniker Carlos de Sena - Rua / Sebastião de Souza número 282</h1></legend>
-<li>Metragem do cabo / 97</li>
-<li>ESTICADOR / 6</li>
-<li>CONECTOR / 2</li>
-<li>ROLDANA / 2</li>
-</fieldset></a><br>
+<li class="post deep-space" style="backgroud-color: #fff;" ><a><i class="deep-space">10/04/2019 16:46 - CLIENTE: kaique Pinheiro Coelho - RUA: Dario bochino 3108</i>
+<p class="instagram">MATERIAL: 8 ESTICADOR 128 de fibra</p>
+<p class="instagram">SINAL: 18.30</p>
+</li>
 
-<a><fieldset><legend><h1>10/04/2019 16:46 - CLIENTE:Mariasa de Siqueira - RUA:Roberto domingo schiavo 81</h1></legend>
-<li>MATERIAL: 4ESTICADOR 81 de fibra</li>
-<li>SINAL: 19.30</li>
-</fieldset></a><br>
+<li class="post deep-space" style="backgroud-color: #fff;" ><a><i class="deep-space">10/04/2019 16:46 - Cliente:  Zilda Algusto de Castro Ribeiro - Rua Alice Guimarães Pellegrini 710</i>
+<p class="instagram">Metragem do cabo _ 28 m</p>
+<p class="instagram">ESTICADOR / 4</p>
+<p class="instagram">CONECTOR /2</p>
+</li>
 
-<a><fieldset><legend><h1>10/04/2019 16:46 - Cliente Dulcilene Bastos Campos - Rua Eulália Siqueira de Campos 327 casa 01</h1></legend>
-<li>CTO 270904 porta 01</li>
-<li>Material 39 mts fo 4 CONECTOR 2 ESTICADOR</li>
-<li>Sinal -20,00</li>
-</fieldset></a><br>
+<li class="post deep-space" style="backgroud-color: #fff;" ><a><i class="deep-space">10/04/2019 16:46 - Cliente / Liniker Carlos de Sena - Rua / Sebastião de Souza número 282</i>
+<p class="instagram">Metragem do cabo / 97</p>
+<p class="instagram">ESTICADOR / 6</p>
+<p class="instagram">CONECTOR / 2</p>
+<p class="instagram">ROLDANA / 2</p>
+</li>
 
-<div id="total10"></div>
+<li class="post deep-space" style="backgroud-color: #fff;" ><a><i class="deep-space">10/04/2019 16:46 - CLIENTE:Mariasa de Siqueira - RUA:Roberto domingo schiavo 81</i>
+<p class="instagram">MATERIAL: 4ESTICADOR 81 de fibra</p>
+<p class="instagram">SINAL: 19.30</p>
+</li>
 
-<a><fieldset><legend><h1>10/04/2019 16:46 - Cliente Rafael Vitor Fermiano - Rua Sebastião de Souza número 61</h1></legend>
-<li>CTO 270501 porta 04</li>
-<li>Material 75 mts fo 3 CONECTOR 2 ESTICADOR</li>
-<li>Sinal - 19,00</li>
-</fieldset></a><br>
+<li class="post deep-space" style="backgroud-color: #fff;" ><a><i class="deep-space">10/04/2019 16:46 - Cliente Dulcilene Bastos Campos - Rua Eulália Siqueira de Campos 327 casa 01</i>
+<p class="instagram">CTO 270904 porta 01</p>
+<p class="instagram">Material 39 mts fo 4 CONECTOR 2 ESTICADOR</p>
+<p class="instagram">Sinal -20,00</p>
+</li>
 
-<a><fieldset><legend><h1 style="color:red;">TOTAL DE ITENS</h1></legend>
-<li>35	 - 	ESTICADOR PLÁSTICO PARA DROP ÓPTICO	 - 	42	UN</li>
-<li>1053	 - 	CONECTOR SC/APC D-01 SIPIBSFIBER	 - 	17	UN</li>
-<li>527	 - 	CABO OPTICO CFOAC-BLI-A/B-CM-01-CO-LSZH PR - DROP FAST COMPACTO	 - 	748	MT</li>
-<li>43	 - 	ROLDANA PLASTICA 2 VIAS (KIT ROLDANA)	 - 	8	UN</li>
-</fieldset></a><br>
-</ul></fieldset></div>
-<br>
-<br>
-<br>
-<br>
-<div id="11" class="border div"><fieldset><legend>11/04/2019 - Total de Clientes: 6</legend>
-<ul>
-<a style="color:red;" href="#total11"><h1 style="color:red;">Total de Itens</h1></a>
-<a><fieldset><legend><h1>11/04/2019 12:12 - Cliente Graciella Scarpino dos Santos - Rua Eloísa Lotierzo 12</h1></legend>
-<li>CTO 4901 porta 4</li>
-<li>Material 1 CONECTOR</li>
-<li>Sinal - 19,00</li>
-<li><b>Residencial já tinha fibra PomboNet</b></li>
-</fieldset></a><br>
 
-<a><fieldset><legend><h1>11/04/2019 14:38 - Alessandro Dias da Rocha - Rua Tenente jose Roberto Reynaldo 159 casa 03</h1></legend>
-<li>CTO sem identificação</li>
-<li>Porta 8</li>
-<li>Material 102 mts 6 ESTICADOR 2 CONECTOR 2 ROLDANAs </li>
-<li>Sinal - 21,00</li>
-</fieldset></a><br>
+<li class="post deep-space" style="backgroud-color: #fff;" ><a><i class="deep-space">10/04/2019 16:46 - Cliente Rafael Vitor Fermiano - Rua Sebastião de Souza número 61</i>
+<p class="instagram">CTO 270501 porta 04</p>
+<p class="instagram">Material 75 mts fo 3 CONECTOR 2 ESTICADOR</p>
+<p class="instagram">Sinal - 19,00</p>
+</li>
 
-<a><fieldset><legend><h1>11/04/2019 15:09 - Cliente Anderson Ferreira de Lima - Estrada do Varjão 3101</h1></legend>
-<li>Todas as caixas próximas estão esgotadas</li>
-<li>Favor verificar viabilidade com ampliação ou ou cancelamento sem retirada de drop</li>
-</fieldset></a><br>
+<li class="post deep-space" style="backgroud-color: #fff;" ><a><i class="deep-space">TOTAL DE ITENS</i>
+<p class="instagram">35	 - 	ESTICADOR PLÁSTICO PARA DROP ÓPTICO	 - 	42	UN</p>
+<p class="instagram">1053	 - 	CONECTOR SC/APC D-01 SIPIBSFIBER	 - 	17	UN</p>
+<p class="instagram">527	 - 	CABO OPTICO CFOAC-BLI-A/B-CM-01-CO-LSZH PR - DROP FAST COMPACTO	 - 	748	MT</p>
+<p class="instagram">43	 - 	ROLDANA PLASTICA 2 VIAS (KIT ROLDANA)	 - 	8	UN</p>
+</li>
 
-<a><fieldset><legend><h1>11/04/2019 16:46 - Cliente Liliane Karen Bueno - Rua dois 172 casa 3</h1></legend>
-<li>CTO 80707 porta 01</li>
-<li>Material 81 mts 2 conectores azul no cliente</li>
-<li>4 alças</li>
-<li>Sinal - 20,00</li>
-</fieldset></a><br>
+<li class="post deep-space" style="backgroud-color: #fff;" ><a><i class="deep-space">11/04/2019 12:12 - Cliente Graciella Scarpino dos Santos - Rua Eloísa Lotierzo 12</i>
+<p class="instagram">CTO 4901 porta 4</p>
+<p class="instagram">Material 1 CONECTOR</p>
+<p class="instagram">Sinal - 19,00</p>
+<p class="instagram"><b>Residencial já tinha fibra PomboNet</b></p>
+</li>
 
-<a><fieldset><legend><h1>11/04/2019 17:19 - Elizabeth Fossem Araújo - Rua das Laranjeiras 307</h1></legend>
-<li>Ausente</li>
-</fieldset></a><br>
+<li class="post deep-space" style="backgroud-color: #fff;" ><a><i class="deep-space">11/04/2019 14:38 - Alessandro Dias da Rocha - Rua Tenente jose Roberto Reynaldo 159 casa 03</i>
+<p class="instagram">CTO sem identificação</p>
+<p class="instagram">Porta 8</p>
+<p class="instagram">Material 102 mts 6 ESTICADOR 2 CONECTOR 2 ROLDANAs </p>
+<p class="instagram">Sinal - 21,00</p>
+</li>
 
-<div id="total11"></div>
+<li class="post deep-space" style="backgroud-color: #fff;" ><a><i class="deep-space">11/04/2019 15:09 - Cliente Anderson Ferreira de Lima - Estrada do Varjão 3101</i>
+<p class="instagram">Todas as caixas próximas estão esgotadas</p>
+<p class="instagram">Favor verificar viabilidade com ampliação ou ou cancelamento sem retirada de drop</p>
+</li>
 
-<a><fieldset><legend><h1>11/04/2019 18:23 - Rodrigo Ermelino Cezar - Rua anna Schiavo Chrispim 274</h1></legend>
-<li>Todas caixas próximas cheia</li>
-<li>Inviabilizar com ampliação ou verificar cancelamento sem retirada de drop</li>
-</fieldset></a><br>
+<li class="post deep-space" style="backgroud-color: #fff;" ><a><i class="deep-space">11/04/2019 16:46 - Cliente Liliane Karen Bueno - Rua dois 172 casa 3</i>
+<p class="instagram">CTO 80707 porta 01</p>
+<p class="instagram">Material 81 mts 2 conectores azul no cliente</p>
+<p class="instagram">4 alças</p>
+<p class="instagram">Sinal - 20,00</p>
+</li>
 
-<a><fieldset><legend><h1 style="color:red;">TOTAL DE ITENS</h1></legend>
-<li>	35	 - 	ESTICADOR PLÁSTICO PARA DROP ÓPTICO	 - 	12	UN	</li>
-<li>	1053	 - 	CONECTOR SC/APC D-01 SIPIBSFIBER	 - 	3	UN	</li>
-<li>	527	 - 	CABO OPTICO CFOAC-BLI-A/B-CM-01-CO-LSZH PR - DROP FAST COMPACTO	 - 	183	MT	</li>
-<li>	43	 - 	ROLDANA PLASTICA 2 VIAS (KIT ROLDANA)	 - 	2	UN	</li>
-<li>	25	 - 	CONECTOR SC/UPC GREATEK	 - 	2	UN	</li>
+<li class="post deep-space" style="backgroud-color: #fff;" ><a><i class="deep-space">11/04/2019 17:19 - Elizabeth Fossem Araújo - Rua das Laranjeiras 307</i>
+<p class="instagram">Ausente</p>
+</li>
 
-</fieldset></a><br>
-</ul></fieldset></div>
-<br>
-<br>
-<br>
-<br>
-<div id="12" class="border div"><fieldset><legend>12/04/2019 - Total de Clientes: 7</legend>
-<ul>
-<a style="color:red;" href="#total12"><h1 style="color:red;">Total de Itens</h1></a>
-<a><fieldset><legend><h1>12/04/2019 9:00 - Cliente.Ygor Fagundes ramaldes Silva. - Rua Luciano milane 125</h1></legend>
-<li>Cto71108</li>
-<li>Porta4</li>
-<li>Material 97 MTS </li>
-<li>4 alças</li>
-<li>2 conectores.1azul</li>
-<li>sinal-20,00</li>
-</fieldset></a><br>
 
-<a><fieldset><legend><h1>12/04/2019 9:03 - 1CLIENTE:Pedro junior Araújo Barbosa - RUA:armando Odair scrico 60</h1></legend>
-<li>MATERIAL: 2alças 56 de fibra</li>
-<li>ESTUDO: 80902</li>
-<li>FIBRA: 3</li>
-<li>SINAL: 20.00</li>
-</fieldset></a><br>
+<li class="post deep-space" style="backgroud-color: #fff;" ><a><i class="deep-space">11/04/2019 18:23 - Rodrigo Ermelino Cezar - Rua anna Schiavo Chrispim 274</i>
+<p class="instagram">Todas caixas próximas cheia</p>
+<p class="instagram">Inviabilizar com ampliação ou verificar cancelamento sem retirada de drop</p>
+</li>
 
-<a><fieldset><legend><h1>12/04/2019 11:01 - CLIENTE:sara Lima Santos - RUA: 2 número 33</h1></legend>
-<li>MATERIAL: 4alças 76   de fibra</li>
-<li>ESTUDO: 80705</li>
-<li>FIBRA: 1</li>
-<li>SINAL: 19.00</li>
-</fieldset></a><br>
+<li class="post deep-space" style="backgroud-color: #fff;" ><a><i class="deep-space">TOTAL DE ITENS</i>
+<p class="instagram">	35	 - 	ESTICADOR PLÁSTICO PARA DROP ÓPTICO	 - 	12	UN	</p>
+<p class="instagram">	1053	 - 	CONECTOR SC/APC D-01 SIPIBSFIBER	 - 	3	UN	</p>
+<p class="instagram">	527	 - 	CABO OPTICO CFOAC-BLI-A/B-CM-01-CO-LSZH PR - DROP FAST COMPACTO	 - 	183	MT	</p>
+<p class="instagram">	43	 - 	ROLDANA PLASTICA 2 VIAS (KIT ROLDANA)	 - 	2	UN	</p>
+<p class="instagram">	25	 - 	CONECTOR SC/UPC GREATEK	 - 	2	UN	</p>
+</li>
 
-<a><fieldset><legend><h1>12/04/2019 11:41 - Cliente Elizabeth fossem Araújo
-rua das Laranjeiras n307</h1></legend>
-<li>cto 280405</li>
-<li>porta 5</li>
-<li>material 88 mts 2 alças.1 verde 1 azul</li>
-<li>sinal -20.00</li>
-</fieldset></a><br>
+<li class="post deep-space" style="backgroud-color: #fff;" ><a><i class="deep-space">12/04/2019 9:00 - Cliente.Ygor Fagundes ramaldes Silva. - Rua Luciano milane 125</i>
+<p class="instagram">Cto71108</p>
+<p class="instagram">Porta4</p>
+<p class="instagram">Material 97 MTS </p>
+<p class="instagram">4 alças</p>
+<p class="instagram">2 conectores.1azul</p>
+<p class="instagram">sinal-20,00</p>
+</li>
 
-<a><fieldset><legend><h1>12/04/2019 15:21 - Cliente Patrick Eduardo Pereira Valle
-av presbitero Manoel Antônio Dias filho</h1></legend>
-<li>cto 50108 porta5</li>
-<li>materiais 90 mts 5 alças 2 conectores verde</li>
-</fieldset></a><br>
-<div id="total12"></div>
-<a><fieldset><legend><h1>12/04/2019 18:11 - Rua Benedito zorzi 89  bairro residencial santa Giovana 
+<li class="post deep-space" style="backgroud-color: #fff;" ><a><i class="deep-space">12/04/2019 9:03 - 1CLIENTE:Pedro junior Araújo Barbosa - RUA:armando Odair scrico 60</i>
+<p class="instagram">MATERIAL: 2alças 56 de fibra</p>
+<p class="instagram">ESTUDO: 80902</p>
+<p class="instagram">FIBRA: 3</p>
+<p class="instagram">SINAL: 20.00</p>
+</li>
+
+<li class="post deep-space" style="backgroud-color: #fff;" ><a><i class="deep-space">12/04/2019 11:01 - CLIENTE:sara Lima Santos - RUA: 2 número 33</i>
+<p class="instagram">MATERIAL: 4alças 76   de fibra</p>
+<p class="instagram">ESTUDO: 80705</p>
+<p class="instagram">FIBRA: 1</p>
+<p class="instagram">SINAL: 19.00</p>
+</li>
+
+<li class="post deep-space" style="backgroud-color: #fff;" ><a><i class="deep-space">12/04/2019 11:41 - Cliente Elizabeth fossem Araújo
+rua das Laranjeiras n307</i>
+<p class="instagram">cto 280405</p>
+<p class="instagram">porta 5</p>
+<p class="instagram">material 88 mts 2 alças.1 verde 1 azul</p>
+<p class="instagram">sinal -20.00</p>
+</li>
+
+<li class="post deep-space" style="backgroud-color: #fff;" ><a><i class="deep-space">12/04/2019 15:21 - Cliente Patrick Eduardo Pereira Valle
+av presbitero Manoel Antônio Dias filho</i>
+<p class="instagram">cto 50108 porta5</p>
+<p class="instagram">materiais 90 mts 5 alças 2 conectores verde</p>
+</li>
+
+<li class="post deep-space" style="backgroud-color: #fff;" ><a><i class="deep-space">12/04/2019 18:11 - Rua Benedito zorzi 89  bairro residencial santa Giovana 
  Cliente  Eliana Aparecida dos Santos franciscato 
-Cliente ausente</h1></legend>
-<li>Ausente</li>
-</fieldset></a><br>
+Cliente ausente</i>
+<p class="instagram">Ausente</p>
+</li>
 
-<a><fieldset><legend><h1>12/04/2019 18:28 - Willian José da Silva 
-Rua Estrada do varjao 1832 Rua 8 bairro Novo Horizonte</h1></legend>
-<li>endereço não localizado</li>
-</fieldset></a><br>
+<li class="post deep-space" style="backgroud-color: #fff;" ><a><i class="deep-space">12/04/2019 18:28 - Willian José da Silva 
+Rua Estrada do varjao 1832 Rua 8 bairro Novo Horizonte</i>
+<p class="instagram">endereço não localizado</p>
+</li>
 
-<a><fieldset><legend><h1 style="color:red;">TOTAL DE ITENS</h1></legend>
-<li>	35	 - 	ESTICADOR PLÁSTICO PARA DROP ÓPTICO	 - 	17	UN	</li>
-<li>	1053	 - 	CONECTOR SC/APC D-01 SIPIBSFIBER	 - 	5	UN	</li>
-<li>	527	 - 	CABO OPTICO CFOAC-BLI-A/B-CM-01-CO-LSZH PR - DROP FAST COMPACTO	 - 	407	MT	</li>
-<li>	43	 - 	ROLDANA PLASTICA 2 VIAS (KIT ROLDANA)	 - 	0	UN	</li>
-<li>	25	 - 	CONECTOR SC/UPC GREATEK	 - 	2	UN	</li>
+<li class="post deep-space" style="backgroud-color: #fff;" ><a><i class="deep-space">TOTAL DE ITENS</i>
+<p class="instagram">	35	 - 	ESTICADOR PLÁSTICO PARA DROP ÓPTICO	 - 	17	UN	</p>
+<p class="instagram">	1053	 - 	CONECTOR SC/APC D-01 SIPIBSFIBER	 - 	5	UN	</p>
+<p class="instagram">	527	 - 	CABO OPTICO CFOAC-BLI-A/B-CM-01-CO-LSZH PR - DROP FAST COMPACTO	 - 	407	MT	</p>
+<p class="instagram">	43	 - 	ROLDANA PLASTICA 2 VIAS (KIT ROLDANA)	 - 	0	UN	</p>
+<p class="instagram">	25	 - 	CONECTOR SC/UPC GREATEK	 - 	2	UN	</p>
+</li>
 
-</fieldset></a><br>
-</ul></fieldset></div>
-<br>
-<br>
-<br>
-<br>
-<div id="13" class="border div"><fieldset><legend>13/04/2019 - Total de Clientes: 1</legend>
-<ul>
-<a style="color:red;" href="#total13"><h1 style="color:red;">Total de Itens</h1></a>
+<li class="post deep-space" style="backgroud-color: #fff;" ><a><i class="deep-space">13/04/2019 15:22 - CLIENTE:Eliana Aparecida dos Santos franciacato 
+RUA Benedito zorzi 89</i>
+<p class="instagram">MATERIAL: 4alças 56 de fibra 1 Conector verde 1 conector azul </p>
+<p class="instagram">ESTUDO:81008</p>
+<p class="instagram">Fibra 5</p>
+<p class="instagram">SINAL: 18.63</p>
+<p class="instagram">ACOMPANHADO POR: Eliana</p>
+</li>
 
-<div id="total13"></div>
+<li class="post deep-space" style="backgroud-color: #fff;" ><a><i class="deep-space">TOTAL DE ITENS</i>
+<p class="instagram">	35	 - 	ESTICADOR PLÁSTICO PARA DROP ÓPTICO	 - 	4	UN	</p>
+<p class="instagram">	1053	 - 	CONECTOR SC/APC D-01 SIPIBSFIBER	 - 	1	UN	</p>
+<p class="instagram">	527	 - 	CABO OPTICO CFOAC-BLI-A/B-CM-01-CO-LSZH PR - DROP FAST COMPACTO	 - 	56	MT	</p>
+<p class="instagram">	43	 - 	ROLDANA PLASTICA 2 VIAS (KIT ROLDANA)	 - 	0	UN	</p>
+<p class="instagram">	25	 - 	CONECTOR SC/UPC GREATEK	 - 	1	UN	</p>
+</li>
 
-<a><fieldset><legend><h1>13/04/2019 15:22 - CLIENTE:Eliana Aparecida dos Santos franciacato 
-RUA Benedito zorzi 89</h1></legend>
-<li>MATERIAL: 4alças 56 de fibra 1 Conector verde 1 conector azul </li>
-<li>ESTUDO:81008</li>
-<li>Fibra 5</li>
-<li>SINAL: 18.63</li>
-<li>ACOMPANHADO POR: Eliana</li>
-</fieldset></a><br>
+<li class="post deep-space" style="backgroud-color: #fff;" ><a><i class="deep-space">14/04/2019 08:04 - Cliente Alessandra Cris tina pedroso 
+RUA: João buscato 51 </i>
+<p class="instagram">MATERIAL: 4alças 53de fibra 1 Conector verde 1 conector azul </p>
+<p class="instagram">ESTUDO:270704</p>
+<p class="instagram">Fibra 2</p>
+<p class="instagram">SINAL: 19.47</p>
+<p class="instagram">ACOMPANHADO POR: Alessandra</p>
+</li>
 
-<a><fieldset><legend><h1 style="color:red;">TOTAL DE ITENS</h1></legend>
-<li>	35	 - 	ESTICADOR PLÁSTICO PARA DROP ÓPTICO	 - 	4	UN	</li>
-<li>	1053	 - 	CONECTOR SC/APC D-01 SIPIBSFIBER	 - 	1	UN	</li>
-<li>	527	 - 	CABO OPTICO CFOAC-BLI-A/B-CM-01-CO-LSZH PR - DROP FAST COMPACTO	 - 	56	MT	</li>
-<li>	43	 - 	ROLDANA PLASTICA 2 VIAS (KIT ROLDANA)	 - 	0	UN	</li>
-<li>	25	 - 	CONECTOR SC/UPC GREATEK	 - 	1	UN	</li>
+<li class="post deep-space" style="backgroud-color: #fff;" ><a><i class="deep-space">TOTAL DE ITENS</i>
+<p class="instagram">	35	 - 	ESTICADOR PLÁSTICO PARA DROP ÓPTICO	 - 	4	UN	</p>
+<p class="instagram">	1053	 - 	CONECTOR SC/APC D-01 SIPIBSFIBER	 - 	1	UN	</p>
+<p class="instagram">	527	 - 	CABO OPTICO CFOAC-BLI-A/B-CM-01-CO-LSZH PR - DROP FAST COMPACTO	 - 	53	MT	</p>
+<p class="instagram">	43	 - 	ROLDANA PLASTICA 2 VIAS (KIT ROLDANA)	 - 	0	UN	</p>
+<p class="instagram">	25	 - 	CONECTOR SC/UPC GREATEK	 - 	1	UN	</p>
+</li>
 
-</fieldset></a><br>
-</ul></fieldset></div>
+<li class="post deep-space" style="backgroud-color: #fff;" ><a><i class="deep-space">15/04/2019 09:31 - Cliente Andre Ricardo Garcia 
+Rua Irany Aparecida Costa 70 Jardim Tulipas </i>
+<p class="instagram">Cliente ausente número para contato não é do assinante</p>
+</li>
 
-<br>
-<br>
-<br>
-<br>
-<div id="14" class="border div"><fieldset><legend>14/04/2019 - Total de Clientes: 1</legend>
-<ul>
-<a style="color:red;" href="#total14"><h1 style="color:red;">Total de Itens</h1></a>
-<div id="total14"></div>
-<a><fieldset><legend><h1>14/04/2019 08:04 - Cliente Alessandra Cris tina pedroso 
-RUA: João buscato 51 </h1></legend>
-<li>MATERIAL: 4alças 53de fibra 1 Conector verde 1 conector azul </li>
-<li>ESTUDO:270704</li>
-<li>Fibra 2</li>
-<li>SINAL: 19.47</li>
-<li>ACOMPANHADO POR: Alessandra</li>
-</fieldset></a><br>
-<a><fieldset><legend><h1 style="color:red;">TOTAL DE ITENS</h1></legend>
-<li>	35	 - 	ESTICADOR PLÁSTICO PARA DROP ÓPTICO	 - 	4	UN	</li>
-<li>	1053	 - 	CONECTOR SC/APC D-01 SIPIBSFIBER	 - 	1	UN	</li>
-<li>	527	 - 	CABO OPTICO CFOAC-BLI-A/B-CM-01-CO-LSZH PR - DROP FAST COMPACTO	 - 	53	MT	</li>
-<li>	43	 - 	ROLDANA PLASTICA 2 VIAS (KIT ROLDANA)	 - 	0	UN	</li>
-<li>	25	 - 	CONECTOR SC/UPC GREATEK	 - 	1	UN	</li>
+<li class="post deep-space" style="backgroud-color: #fff;" ><a><i class="deep-space">15/04/2019 09:31 - Cliente Gilberto evangelista de Souza 
+Rua av Adelino Martins 799 casa 3</i>
+<p class="instagram">MATERIAL: 6alças 58de fibra 1 Conector verde 1 conector azul </p>
+<p class="instagram">ESTUDO:81402</p>
+<p class="instagram">Fibra 1</p>
+<p class="instagram">SINAL: 19.41</p>
+<p class="instagram">ACOMPANHADO POR: Gilberto</p>
+</li>
 
-</fieldset></a><br>
-</ul></fieldset></div>
-<br>
-<br>
-<br>
-<br>
-<div id="15" class="border div"><fieldset><legend>15/04/2019 - Total de Clientes: 2</legend>
-<ul>
-<a style="color:red;" href="#total15"><h1 style="color:red;">Total de Itens</h1></a>
+<li class="post deep-space" style="backgroud-color: #fff;" ><a><i class="deep-space">15/04/2019 17:47 - Cliente Gilberto Ângelo bejiato  
+Rua Francisco Cabral 1 número 605</i>
+<p class="instagram">MATERIAL: 2alças 38de fibra 1 Conector verde 1 conector azul </p>
+<p class="instagram">ESTUDO:71206</p>
+<p class="instagram">Fibra 1</p>
+<p class="instagram">SINAL: 19.79</p>
+<p class="instagram">ACOMPANHADO POR: julie</p>
+</li>
 
-<a><fieldset><legend><h1>15/04/2019 09:31 - Cliente Andre Ricardo Garcia 
-Rua Irany Aparecida Costa 70 Jardim Tulipas </h1></legend>
-<li>Cliente ausente número para contato não é do assinante</li>
-</fieldset></a><br>
-<a><fieldset><legend><h1>15/04/2019 09:31 - Cliente Gilberto evangelista de Souza 
-Rua av Adelino Martins 799 casa 3</h1></legend>
-<li>MATERIAL: 6alças 58de fibra 1 Conector verde 1 conector azul </li>
-<li>ESTUDO:81402</li>
-<li>Fibra 1</li>
-<li>SINAL: 19.41</li>
-<li>ACOMPANHADO POR: Gilberto</li>
-</fieldset></a><br>
-<div id="total15"></div>
-<a><fieldset><legend><h1>15/04/2019 17:47 - Cliente Gilberto Ângelo bejiato  
-Rua Francisco Cabral 1 número 605</h1></legend>
-<li>MATERIAL: 2alças 38de fibra 1 Conector verde 1 conector azul </li>
-<li>ESTUDO:71206</li>
-<li>Fibra 1</li>
-<li>SINAL: 19.79</li>
-<li>ACOMPANHADO POR: julie</li>
-</fieldset></a><br>
-<a><fieldset><legend><h1 style="color:red;">TOTAL DE ITENS</h1></legend>
-<li>	35	 - 	ESTICADOR PLÁSTICO PARA DROP ÓPTICO	 - 	8	UN	</li>
-<li>	1053	 - 	CONECTOR SC/APC D-01 SIPIBSFIBER	 - 	2	UN	</li>
-<li>	527	 - 	CABO OPTICO CFOAC-BLI-A/B-CM-01-CO-LSZH PR - DROP FAST COMPACTO	 - 	96	MT	</li>
-<li>	43	 - 	ROLDANA PLASTICA 2 VIAS (KIT ROLDANA)	 - 	0	UN	</li>
-<li>	25	 - 	CONECTOR SC/UPC GREATEK	 - 	2	UN	</li>
+<li class="post deep-space" style="backgroud-color: #fff;" ><a><i class="deep-space">TOTAL DE ITENS</i>
+<p class="instagram">	35	 - 	ESTICADOR PLÁSTICO PARA DROP ÓPTICO	 - 	8	UN	</p>
+<p class="instagram">	1053	 - 	CONECTOR SC/APC D-01 SIPIBSFIBER	 - 	2	UN	</p>
+<p class="instagram">	527	 - 	CABO OPTICO CFOAC-BLI-A/B-CM-01-CO-LSZH PR - DROP FAST COMPACTO	 - 	96	MT	</p>
+<p class="instagram">	43	 - 	ROLDANA PLASTICA 2 VIAS (KIT ROLDANA)	 - 	0	UN	</p>
+<p class="instagram">	25	 - 	CONECTOR SC/UPC GREATEK	 - 	2	UN	</p>
+</li>
 
-</fieldset></a><br>
-</ul></fieldset></div>
-<br>
-<br>
-<br>
-<br>
-<div id="16" class="border div"><fieldset><legend>16/04/2019 - Total de Clientes: 1</legend>
-<ul>
-<a style="color:red;" href="#total16"><h1 style="color:red;">Total de Itens</h1></a>
+<li class="post deep-space" style="backgroud-color: #fff;" ><a><i class="deep-space">16/04/2019 10:42 - CLIENTE:  Maria Luciana dos Santos Silva 
+RUA:  Dario bochino 4772 casa 2 </i>
+<p class="instagram">ESTUDO:3 11 03 </p>
+<p class="instagram">1 conector verde 1 conector azul </p>
+<p class="instagram">SINAL 22.26</p>
+<p class="instagram">Acompanhado:JOSÉ</p>
+</li>
 
-<a><fieldset><legend><h1>16/04/2019 10:42 - CLIENTE:  Maria Luciana dos Santos Silva 
-RUA:  Dario bochino 4772 casa 2 </h1></legend>
-<li>ESTUDO:3 11 03 </li>
-<li>1 conector verde 1 conector azul </li>
-<li>SINAL 22.26</li>
-<li>Acompanhado:JOSÉ</li>
-</fieldset></a><br>
+<li class="post deep-space" style="backgroud-color: #fff;" ><a><i class="deep-space">16/04/2019 11:41 - Cliente Luciana Santos 
+RUA:Domigos Roberto schiavo 403</i>
+<p class="instagram">MATERIAL: 2alças 33de fibra 1 Conector verde 1 conector azul </p>
+<p class="instagram">ESTUDO 6920</p>
+<p class="instagram">Fibra 2</p>
+<p class="instagram">SINAL: 21.46</p>
+<p class="instagram">ACOMPANHADO POR: JOSÉ Paulo</p>
+</li>
 
-<a><fieldset><legend><h1>16/04/2019 11:41 - Cliente Luciana Santos 
-RUA:Domigos Roberto schiavo 403</h1></legend>
-<li>MATERIAL: 2alças 33de fibra 1 Conector verde 1 conector azul </li>
-<li>ESTUDO 6920</li>
-<li>Fibra 2</li>
-<li>SINAL: 21.46</li>
-<li>ACOMPANHADO POR: JOSÉ Paulo</li>
-</fieldset></a><br>
-<div id="total16"></div>
-<a><fieldset><legend><h1>16/04/2019 15:11 - Cliente Rodrigo viera Ramos 
-RUA: orlando branco 443</h1></legend>
-<li>MATERIAL: 4alças 53de fibra 1 Conector verde 1 conector azul </li>
-<li>ESTUDO 81608</li>
-<li>Fibra 3</li>
-<li>SINAL: 19.80</li>
-<li>ACOMPANHADO POR:rodrigo</li>
-</fieldset></a><br>
+<li class="post deep-space" style="backgroud-color: #fff;" ><a><i class="deep-space">16/04/2019 15:11 - Cliente Rodrigo viera Ramos 
+RUA: orlando branco 443</i>
+<p class="instagram">MATERIAL: 4alças 53de fibra 1 Conector verde 1 conector azul </p>
+<p class="instagram">ESTUDO 81608</p>
+<p class="instagram">Fibra 3</p>
+<p class="instagram">SINAL: 19.80</p>
+<p class="instagram">ACOMPANHADO POR:rodrigo</p>
+</li>
 
-<a><fieldset><legend><h1 style="color:red;">TOTAL DE ITENS</h1></legend>
-<li>	35	 - 	ESTICADOR PLÁSTICO PARA DROP ÓPTICO	 - 	6	UN	</li>
-<li>	1053	 - 	CONECTOR SC/APC D-01 SIPIBSFIBER	 - 	3	UN	</li>
-<li>	527	 - 	CABO OPTICO CFOAC-BLI-A/B-CM-01-CO-LSZH PR - DROP FAST COMPACTO	 - 	86	MT	</li>
-<li>	43	 - 	ROLDANA PLASTICA 2 VIAS (KIT ROLDANA)	 - 	0	UN	</li>
-<li>	25	 - 	CONECTOR SC/UPC GREATEK	 - 	3	UN	</li>
+<li class="post deep-space" style="backgroud-color: #fff;" ><a><i class="deep-space">TOTAL DE ITENS</i>
+<p class="instagram">	35	 - 	ESTICADOR PLÁSTICO PARA DROP ÓPTICO	 - 	6	UN	</p>
+<p class="instagram">	1053	 - 	CONECTOR SC/APC D-01 SIPIBSFIBER	 - 	3	UN	</p>
+<p class="instagram">	527	 - 	CABO OPTICO CFOAC-BLI-A/B-CM-01-CO-LSZH PR - DROP FAST COMPACTO	 - 	86	MT	</p>
+<p class="instagram">	43	 - 	ROLDANA PLASTICA 2 VIAS (KIT ROLDANA)	 - 	0	UN	</p>
+<p class="instagram">	25	 - 	CONECTOR SC/UPC GREATEK	 - 	3	UN	</p>
 
-</fieldset></a><br>
-</ul></fieldset></div>
+</li>
 
-<div id="17" class="border div"><fieldset><legend>17/04/2019 - Total de Clientes: 1</legend>
-<ul>
-<a style="color:red;" href="#total17"><h1 style="color:red;">Total de Itens</h1></a>
-<a><fieldset><legend><h1>NADA AINDA</h1></legend>
-<li>NADA AINDA</li>
-</fieldset></a><br>
-<a><fieldset><legend><h1 style="color:red;">TOTAL DE ITENS</h1></legend>
-<li>NADA AINDA</li>
-</fieldset></a><br>
-</ul></fieldset></div>
-</div>
-</body>
-		<script>
-var offset = $('#cssmenu').offset().top;
-var $cssmenu = $('#cssmenu'); // guardar o elemento na memoria para melhorar performance
-$(document).on('scroll', function () {
-    if (offset <= $(window).scrollTop()) {
-        $cssmenu.addClass('fixar');
-    } else {
-        $cssmenu.removeClass('fixar');
-    }
+<li class="post deep-space" style="backgroud-color: #fff;" ><a><i class="deep-space">17/04/2019 - NADA AINDA</i>
+<p class="instagram">NADA AINDA</p>
+</li>
+<li class="post deep-space" style="backgroud-color: #fff;" ><a><i class="deep-space">TOTAL DE ITENS</i>
+<p class="instagram">NADA AINDA</p>
+</li>
+
+
+
+</ul></center></div>
+<!--Kite Menu Js-->
+<script>
+(function ($) {
+	$.fn.kiteMenu = function (options) {
+
+		var setting = $.extend({
+			kiteSkin: "default", //put the name of theme in this string
+			boxShadow: false, //shadow at the bottom of menubar, ture to enable
+			textShadow: false, //shadow for text, true for enable
+
+		}, options);
+
+		return this.each(function () {
+
+			var target = $(this);
+
+			//applying the menu customization 
+			if (setting.boxShadow == true) {
+
+				$(target).addClass("box-shadow");
+
+			}
+			if (setting.textShadow == true) {
+
+				$(target).addClass("text-shadow");
+
+			}
+			$(target).addClass(setting.kiteSkin);
+
+
+			var kiteSearch = $(".kite-search");
+
+			var search_open = false; //to determine whether the search box open or not
+			var menu_open = false; // to determine whether the menu links open or not
+
+			//Getting the kite triggers 
+			var trigger = {
+				'menu': '.kite-menu-trigger', //hamburger 
+				'search': '.kite-search-trigger', //search trigger
+			};
+
+
+			$(trigger.menu).on('click', function () {
+
+				$(this).toggleClass("active"); //this means hamburger menu, when user clicks on it the menu will open and it's become close button 
+
+				if (search_open == true) { //if search box already shown 
+
+					$(target).toggleClass("expand-2x");
+
+					//then menu will be expanded by 2x
+				} else {
+					//otherwise menu will be expand by 1x
+					$(target).toggleClass("expand-1x");
+
+
+				}
+
+				//now check, if hamburger opened 
+				if ($(this).hasClass("active")) {
+					//then the navigation links will fade in
+					$(".links-wrapper").fadeIn("slow");
+
+					menu_open = true; //indicate that menu opened 
+
+				}
+
+				//otherwise  (if hamburger clicked again) the navigation fade away 
+				else {
+
+					$(".links-wrapper").fadeOut("fast");
+
+					menu_open = false; //indicate that menu closed
+
+				}
+
+
+			});
+
+
+			$(trigger.search).click(function (x) {
+
+				x = $(this); //indicates Search trigger icon
+
+				x.toggleClass("active"); //toggle the active class for search icon 
+
+				if (x.hasClass("active")) { //to check if user clicked on the search trigger 
+
+					search_open = true; //indicates that search box opened 
+
+					//now searchbox will be slide down with the 400ms speed. 
+					$(kiteSearch).slideDown(400, function () {
+						//after sliding search box, the input will immediately focus
+						$(kiteSearch).find("input").focus();
+
+					});
+
+					//if search trigger clicked again 
+				} else {
+
+					search_open = false; //indicates that search box closed 
+
+					$(kiteSearch).slideUp(); //slide up the search box
+				}
+
+				//check if menu links are opened then search box will be expanded by 2x
+
+				if (menu_open == true) {
+
+					$(target).toggleClass("expand-2x");
+
+
+				}
+				//on the other hand, it will expand by 1x
+				else {
+					$(target).toggleClass("expand-1x");
+
+
+				}
+
+			});
+
+
+		});
+	};
+
+})(jQuery);
+</script>
+<script>
+function myFunction() {
+var input, filter, ul, li, a, i;
+input = document.getElementById("myInput");
+filter = input.value.toUpperCase();
+ul = document.getElementById("myUL");
+li = ul.getElementsByTagName("li");
+for (i = 0; i < li.length; i++) {
+a = li[i].getElementsByTagName("a")[0];
+if (a.innerHTML.toUpperCase().indexOf(filter) > -1) {
+li[i].style.display = "";
+} else {
+li[i].style.display = "none"; }
+}
+}
+</script>
+<script>
+$(document).ready(function(){
+$(".kite-menu").kiteMenu();
+}); //jQuery
+</script>
+<script>
+jQuery("document").ready(function($){
+
+    var nav = $('.nav-container');
+
+    $(window).scroll(function () {
+        if ($(this).scrollTop() > 136) {
+            nav.addClass("f-nav");
+        } else {
+            nav.removeClass("f-nav");
+        }
+    });
+
 });
 </script>
+
+
+
+</body>
 </html>
-</head>
